@@ -1,9 +1,12 @@
 <app-header></app-header>
-<mat-tab-group>
-  <mat-tab label="View DB">
-      <app-database></app-database>
-  </mat-tab>
-  <mat-tab label="Load Excel">
-      <app-filesystem></app-filesystem>
-  </mat-tab>
-</mat-tab-group>
+
+<div id="wrapper">
+  <mat-tab-group id="tab-group">
+    <mat-tab label="View DB">
+        <app-database></app-database>
+    </mat-tab>
+    <mat-tab label="Load Excel">
+        <app-filesystem></app-filesystem>
+    </mat-tab>
+  </mat-tab-group>
+</div>
