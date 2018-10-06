@@ -9,7 +9,7 @@ import { HttpClient } from '@angular/common/http';
 export class TableComponent implements OnInit {
 
   columnDefs = [
-    {headerName: 'Make', field: 'make' },
+    {headerName: 'Make', field: 'make', checkboxSelection: true  },
     {headerName: 'Model', field: 'model' },
     {headerName: 'Price', field: 'price'}
 ];
