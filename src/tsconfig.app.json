@@ -2,7 +2,15 @@
   "extends": "../tsconfig.json",
   "compilerOptions": {
     "outDir": "../out-tsc/app",
-    "types": []
+    "types": [],
+    "paths": {
+      "@core/*": [
+        "app/core/*"
+      ],
+      "@environment": [
+        "environments/environment"
+      ]
+    }
   },
   "exclude": [
     "test.ts",
