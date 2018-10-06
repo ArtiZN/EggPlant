@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { MatTabsModule } from '@angular/material/tabs';
 import { AgGridModule } from 'ag-grid-angular';
+import { HttpClientModule } from '@angular/common/http';
 
 import { HeaderComponent } from './components/header/header.component';
 import { HomeComponent } from './components/home/home.component';
@@ -14,7 +15,8 @@ import { BottomPanelComponent } from './components/bottom-panel/bottom-panel.com
     imports: [
         BrowserModule,
         MatTabsModule,
-        AgGridModule.withComponents([])
+        AgGridModule.withComponents([]),
+        HttpClientModule
     ],
     declarations: [
         HeaderComponent,
