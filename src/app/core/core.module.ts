@@ -7,6 +7,7 @@ import { HomeComponent } from './components/home/home.component';
 import { DatabaseComponent } from './components/database/database.component';
 import { FilesystemComponent } from './components/filesystem/filesystem.component';
 import { TableComponent } from './components/table/table.component';
+import { BottomPanelComponent } from './components/bottom-panel/bottom-panel.component';
 
 @NgModule({
     imports: [
@@ -18,7 +19,8 @@ import { TableComponent } from './components/table/table.component';
         HomeComponent,
         DatabaseComponent,
         FilesystemComponent,
-        TableComponent
+        TableComponent,
+        BottomPanelComponent
     ],
     exports: [
 
