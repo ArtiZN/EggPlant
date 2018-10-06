@@ -6,6 +6,7 @@ import { HeaderComponent } from './components/header/header.component';
 import { HomeComponent } from './components/home/home.component';
 import { DatabaseComponent } from './components/database/database.component';
 import { FilesystemComponent } from './components/filesystem/filesystem.component';
+import { TableComponent } from './components/table/table.component';
 
 @NgModule({
     imports: [
@@ -16,7 +17,8 @@ import { FilesystemComponent } from './components/filesystem/filesystem.componen
         HeaderComponent,
         HomeComponent,
         DatabaseComponent,
-        FilesystemComponent
+        FilesystemComponent,
+        TableComponent
     ],
     exports: [
 
