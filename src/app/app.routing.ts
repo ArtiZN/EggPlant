@@ -1,9 +1,10 @@
+import { HomeComponent } from './core/components/home/home.component';
+
 import { Routes, RouterModule } from "@angular/router";
-import { HeaderComponent } from "./core/components/header/header.component";
 
 const routes: Routes = [
 	{
-		path: "", component: HeaderComponent
+		path: "", component: HomeComponent
 	}
 ]
 export const routing = RouterModule.forRoot(routes);
