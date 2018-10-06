@@ -11,5 +11,4 @@ export class BottomPanelComponent implements OnInit {
 
   ngOnInit() {
   }
-
 }
