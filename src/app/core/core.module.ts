@@ -5,6 +5,7 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { HeaderComponent } from './components/header/header.component';
 import { HomeComponent } from './components/home/home.component';
 import { DatabaseComponent } from './components/database/database.component';
+import { FilesystemComponent } from './components/filesystem/filesystem.component';
 
 @NgModule({
     imports: [
@@ -14,7 +15,8 @@ import { DatabaseComponent } from './components/database/database.component';
     declarations: [
         HeaderComponent,
         HomeComponent,
-        DatabaseComponent
+        DatabaseComponent,
+        FilesystemComponent
     ],
     exports: [
 
