@@ -1,6 +1,5 @@
-#wrapper{
-    min-height: 90%; 
-    height: 92%; 
+#wrapper {
+    height: calc(100% - 56px); 
     box-sizing: border-box;
 }
 

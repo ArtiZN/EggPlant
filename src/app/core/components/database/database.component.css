@@ -1,15 +1,15 @@
 .db-container {
     width: 100%;
     height: 100%;
-    padding: 10px 15px;
+    padding: 10px 16px;
+    background-color: #f6f6f6;
 }
 
-.main-table {
+.main-table-container {
     height: 80%;
-    background: red;
+    margin-bottom: 16px;
 }
 
-.table-panel {
-    height: 20%;
-    background: green;
+.table-panel-container {
+    height: calc(20% - 16px);
 }
