@@ -2,14 +2,26 @@ table thead tr a {
     float: right;
 }
 
-table thead tr a:hover {
+table thead tr a i:hover {
     cursor: pointer;
     opacity: 0.8;
 }
 
 .test {
     position: absolute;
-    border: 2px solid darkblue;
     width: 222px;
     height: 168px;
+    border-radius: 2px;
+    border: 1px solid #BDC3C7;
+    background-color: #fff;
 }
+
+/* dropdown menu*/
+.filter-header {
+    padding: 5px 5px;
+    border-bottom: 1px solid #BDC3C7;
+}
+
+/* .filter-header input {
+
+} */

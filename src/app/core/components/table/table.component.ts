@@ -9,6 +9,7 @@ import { AgGridNg2 } from 'ag-grid-angular';
 })
 export class TableComponent implements OnInit {
 
+  // TODO: find approach of applying 'top' and 'left' properties to dropdown
   dropdownState: boolean[] = [];
 
   columnDefs = [

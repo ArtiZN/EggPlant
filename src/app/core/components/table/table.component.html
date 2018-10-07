@@ -3,10 +3,12 @@
     <tr>
       <th *ngFor="let columnDef of columnDefs; let i = index">
         {{ columnDef.headerName }}
-        <a class="mr-1" appScaleFilter (toggle)="toggle($event, i)">
-          <i class="fas fa-align-justify"></i>
+        <a class="mr-1">
+          <i class="fas fa-align-justify" appScaleFilter (toggle)="toggle($event, i)"></i>
           <div *ngIf="dropdownState[i]" class="test">
-            rrrr
+            <div class="filter-header">
+                <input type="text" placeholder="search...">
+            </div>
           </div>
         </a>
       </th>
