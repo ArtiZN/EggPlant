@@ -1,13 +1,16 @@
-<!-- <div class="main-table"> -->
-    <ag-grid-angular
-      #agGrid
-      style="width: 100%; height: 100%;" 
-      class="ag-theme-balham"
-      [rowData]="rowData | async" 
-      [columnDefs]="columnDefs"
-      [enableSorting]="true"
-      [enableFilter]="true"
-      rowSelection="multiple"
-    ></ag-grid-angular>
-    <button (click)="getSelectedRows()">Get Selected Rows</button>
-<!-- </div> -->
+<table class="table table responsive">
+  <thead>
+    <tr>
+      <th *ngFor="let columnDef of columnDefs">
+        {{ columnDef.headerName }}
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let row of rowData">
+      <td>{{ row.make }}</td>
+      <td>{{ row.model }}</td>
+      <td>{{ row.price }}</td>
+    </tr>
+  </tbody>
+</table>

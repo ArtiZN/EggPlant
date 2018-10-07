@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { MatTabsModule } from '@angular/material/tabs';
 import { AgGridModule } from 'ag-grid-angular';
 import { HttpClientModule } from '@angular/common/http';
-import 'ag-grid-enterprise';
+import 'ag-grid-community';
 
 import { HeaderComponent } from './components/header/header.component';
 import { HomeComponent } from './components/home/home.component';
