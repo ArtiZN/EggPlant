@@ -1,3 +1,5 @@
+import { databaseConfig } from './../../constants/database.constants';
+import { MongoService } from './../../services/mongo.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { AgGridNg2 } from 'ag-grid-angular';
@@ -20,7 +22,7 @@ export class TableComponent implements OnInit {
 
   rowData: any;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private mongoDataSource: MongoService) { }
 
   ngOnInit() {
     this.rowData = this.http.get('https://api.myjson.com/bins/ly7d1').subscribe(data => {
@@ -28,6 +30,11 @@ export class TableComponent implements OnInit {
       console.log(data);
     });
     this.dropdownState = new Array<boolean>(3).fill(false);
+
+    this.mongoDataSource.getDocuments(databaseConfig.databaseName, databaseConfig.mainCollectionName)
+      .subscribe((response) => {
+        console.log(response);
+      });
   }
 
   // TODO: update directive to click outside

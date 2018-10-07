@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, InjectionToken, Inject } from '@angular/core';
+import { Observable } from 'rxjs';
 
 export const MONGO_URL = new InjectionToken<string>("restUrl");
 
@@ -9,4 +10,9 @@ export const MONGO_URL = new InjectionToken<string>("restUrl");
 export class MongoService {
 
   constructor(private httpClient: HttpClient, @Inject(MONGO_URL) private uri: string) { }
+
+  getDocuments(sDatabaseName: string, sCollectionName: string): Observable<any> {
+    return this.httpClient
+      .get(`${this.uri}?sDatabaseName=${sDatabaseName}&sCollectionName=${sCollectionName}`);
+  }
 }
