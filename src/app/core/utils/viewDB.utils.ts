@@ -5,10 +5,10 @@ export const createHeaderArray = function(data) {
     if(data && data.length < 2) {
         return data;
     }
-    let result = data.slice(0, 1).map((item) => {
+    let result = data[0].map((item) => {
         return { name: item.name, values: [] };
     });
-    data.array.forEach(document => {
+    data.forEach(document => {
         document.forEach((element, index, array) => {
             if(element.name === result[index].name) {
                 result[index].values.push(element.value);

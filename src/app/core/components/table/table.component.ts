@@ -1,3 +1,4 @@
+import { createHeaderArray } from './../../utils/viewDB.utils';
 import { databaseConfig } from './../../constants/database.constants';
 import { MongoService } from './../../services/mongo.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
@@ -27,13 +28,13 @@ export class TableComponent implements OnInit {
   ngOnInit() {
     this.rowData = this.http.get('https://api.myjson.com/bins/ly7d1').subscribe(data => {
       this.rowData = data;
-      console.log(data);
     });
     this.dropdownState = new Array<boolean>(3).fill(false);
 
     this.mongoDataSource.getDocuments(databaseConfig.databaseName, databaseConfig.mainCollectionName)
       .subscribe((response) => {
         console.log(response);
+        console.log(createHeaderArray(response));
       });
   }
 
