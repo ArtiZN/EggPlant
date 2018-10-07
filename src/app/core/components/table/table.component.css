@@ -6,3 +6,8 @@ table thead tr a:hover {
     cursor: pointer;
     opacity: 0.8;
 }
+
+.test {
+    position: absolute;
+    border: 2px solid darkblue;
+}

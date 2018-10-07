@@ -12,6 +12,7 @@ import { FilesystemComponent } from './components/filesystem/filesystem.componen
 import { TableComponent } from './components/table/table.component';
 import { BottomPanelComponent } from './components/bottom-panel/bottom-panel.component';
 import { FilterComponent } from './components/filter/filter.component';
+import { ScaleFilterDirective } from './directives/scale-filter.directive';
 
 @NgModule({
     imports: [
@@ -27,7 +28,8 @@ import { FilterComponent } from './components/filter/filter.component';
         FilesystemComponent,
         TableComponent,
         BottomPanelComponent,
-        FilterComponent
+        FilterComponent,
+        ScaleFilterDirective
     ],
     exports: [
 

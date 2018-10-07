@@ -1,8 +1,11 @@
 <table class="table table responsive">
   <thead>
     <tr>
-      <th *ngFor="let columnDef of columnDefs">
+      <th #container *ngFor="let columnDef of columnDefs">
         {{ columnDef.headerName }}<a class="mr-1"><i class="fas fa-align-justify"></i></a>
+        <div class="test">
+          {{ container.offsetWidth }}
+        </div>
       </th>
     </tr>
   </thead>
