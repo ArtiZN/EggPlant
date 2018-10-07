@@ -1,3 +1,4 @@
+import { mongoCollections } from './../../constants/collection.constants';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -6,11 +7,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-  collections: string[] = ["GBU", "Products"];
+  collections: string[];
 
   constructor() { }
 
   ngOnInit() {
-    
+    this.collections = mongoCollections;
   }
 }
