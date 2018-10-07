@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatInputModule } from '@angular/material/input';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatButtonModule } from '@angular/material/button';
 import { HttpClientModule } from '@angular/common/http';
 
 
@@ -21,6 +22,7 @@ import { ScaleFilterDirective } from './directives/scale-filter.directive';
         MatTabsModule,
         MatInputModule,
         MatCheckboxModule,
+        MatButtonModule,
         HttpClientModule
     ],
     declarations: [
