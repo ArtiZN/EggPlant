@@ -1,9 +1,10 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { MatTabsModule } from '@angular/material/tabs';
-import { AgGridModule } from 'ag-grid-angular';
+import { MatInputModule } from '@angular/material/input';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 import { HttpClientModule } from '@angular/common/http';
-import 'ag-grid-community';
+
 
 import { HeaderComponent } from './components/header/header.component';
 import { HomeComponent } from './components/home/home.component';
@@ -18,7 +19,8 @@ import { ScaleFilterDirective } from './directives/scale-filter.directive';
     imports: [
         BrowserModule,
         MatTabsModule,
-        AgGridModule.withComponents([]),
+        MatInputModule,
+        MatCheckboxModule,
         HttpClientModule
     ],
     declarations: [

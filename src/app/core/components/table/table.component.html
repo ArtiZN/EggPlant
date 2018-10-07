@@ -5,9 +5,27 @@
         {{ columnDef.headerName }}
         <a class="mr-1">
           <i class="fas fa-align-justify" appScaleFilter (toggle)="toggle($event, i)"></i>
-          <div *ngIf="dropdownState[i]" class="test">
+          <div *ngIf="dropdownState[i]" class="filter-dropdown">
             <div class="filter-header">
-                <input type="text" placeholder="search...">
+              <form class="example-form">
+                <mat-form-field class="example-full-width">
+                  <input matInput placeholder="search...">
+                </mat-form-field>
+              </form>
+            </div>
+            <div class="filter-body">
+              <mat-checkbox class="example-margin">
+                select all
+              </mat-checkbox>
+              <mat-checkbox class="example-margin">
+                  select all
+                </mat-checkbox>
+                <mat-checkbox class="example-margin">
+                    select all
+                  </mat-checkbox>
+                  <mat-checkbox class="example-margin">
+                      select all
+                    </mat-checkbox>
             </div>
           </div>
         </a>
