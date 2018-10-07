@@ -30,6 +30,7 @@ export class TableComponent implements OnInit {
     this.dropdownState = new Array<boolean>(3).fill(false);
   }
 
+  // TODO: update directive to click outside
   toggle($event, i) {
     this.dropdownState[i] = $event;
   }

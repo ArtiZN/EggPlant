@@ -10,18 +10,11 @@ export class ScaleFilterDirective {
   
   @HostListener('click')
   click() {
+    console.log(this.el);
     this.isClicked = !this.isClicked;
     this.toggle.emit(this.isClicked);
   }
 
-  // @HostListener('close')
-  // closeDropdown() {
-  //   this.close()
-  // }
-
   @Output('toggle') 
   toggle: EventEmitter<boolean> = new EventEmitter();
-
-  // @Output('close')
-  // close: EventEmitter<string> = new EventEmitter();
 }
