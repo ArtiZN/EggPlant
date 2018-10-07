@@ -43,7 +43,7 @@ import { MongoService, MONGO_URL } from './services/mongo.service';
     providers: [
         {
 			provide: MONGO_URL, 
-			useValue: `${restApiConfig.protocol}://${restApiConfig.host}:${restApiConfig.port}/api/xml`			
+			useValue: `${restApiConfig.protocol}://${restApiConfig.host}:${restApiConfig.port}/${restApiConfig.api}`			
 		}
     ]
 })
