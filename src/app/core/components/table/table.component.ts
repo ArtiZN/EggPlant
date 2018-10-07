@@ -1,4 +1,4 @@
-import { createHeaderArray } from './../../utils/viewDB.utils';
+import { createTableArray } from './../../utils/viewDB.utils';
 import { databaseConfig } from './../../constants/database.constants';
 import { MongoService } from './../../services/mongo.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
@@ -34,7 +34,8 @@ export class TableComponent implements OnInit {
     this.mongoDataSource.getDocuments(databaseConfig.databaseName, databaseConfig.mainCollectionName)
       .subscribe((response) => {
         console.log(response);
-        console.log(createHeaderArray(response));
+        console.log(createTableArray(response));
+        console.log(createTableArray([response[0]]));
       });
   }
 
