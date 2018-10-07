@@ -11,6 +11,7 @@ import { DatabaseComponent } from './components/database/database.component';
 import { FilesystemComponent } from './components/filesystem/filesystem.component';
 import { TableComponent } from './components/table/table.component';
 import { BottomPanelComponent } from './components/bottom-panel/bottom-panel.component';
+import { FilterComponent } from './components/filter/filter.component';
 
 @NgModule({
     imports: [
@@ -25,7 +26,8 @@ import { BottomPanelComponent } from './components/bottom-panel/bottom-panel.com
         DatabaseComponent,
         FilesystemComponent,
         TableComponent,
-        BottomPanelComponent
+        BottomPanelComponent,
+        FilterComponent
     ],
     exports: [
 
