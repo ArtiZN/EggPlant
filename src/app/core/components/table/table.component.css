@@ -10,4 +10,6 @@ table thead tr a:hover {
 .test {
     position: absolute;
     border: 2px solid darkblue;
+    width: 222px;
+    height: 168px;
 }

@@ -9,6 +9,8 @@ import { AgGridNg2 } from 'ag-grid-angular';
 })
 export class TableComponent implements OnInit {
 
+  dropdownState: boolean[] = [];
+
   columnDefs = [
       {headerName: 'Make', field: 'make', checkboxSelection: true  , filter: "agTextColumnFilter"},
       {headerName: 'Model', field: 'model', filter: "agNumberColumnFilter" },
@@ -24,5 +26,10 @@ export class TableComponent implements OnInit {
       this.rowData = data;
       console.log(data);
     });
+    this.dropdownState = new Array<boolean>(3).fill(false);
+  }
+
+  toggle($event, i) {
+    this.dropdownState[i] = $event;
   }
 }
