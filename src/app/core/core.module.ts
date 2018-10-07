@@ -1,3 +1,4 @@
+import { restApiConfig } from './constants/rest.constants';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { MatTabsModule } from '@angular/material/tabs';
@@ -15,6 +16,7 @@ import { TableComponent } from './components/table/table.component';
 import { BottomPanelComponent } from './components/bottom-panel/bottom-panel.component';
 import { FilterComponent } from './components/filter/filter.component';
 import { ScaleFilterDirective } from './directives/scale-filter.directive';
+import { MongoService, MONGO_URL } from './services/mongo.service';
 
 @NgModule({
     imports: [
@@ -38,6 +40,11 @@ import { ScaleFilterDirective } from './directives/scale-filter.directive';
     exports: [
 
     ],
-    providers: []
+    providers: [
+        {
+			provide: MONGO_URL, 
+			useValue: `${restApiConfig.protocol}://${restApiConfig.host}:${restApiConfig.port}/api/xml`			
+		}
+    ]
 })
 export class CoreModule { }
