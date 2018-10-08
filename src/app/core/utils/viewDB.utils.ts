@@ -1,3 +1,5 @@
+import { getUnique } from './filter.utils';
+
 // TODO: apply interfaces to such type of functions
 
 export const createHeaderArray = function(data) {
@@ -14,7 +16,9 @@ export const createHeaderArray = function(data) {
             });
         });
 
-        return result;
+        return result.map((element) => {
+            return { name: element.name, values: element.values.filter(getUnique) };
+        });
     }
     return [];
 };
