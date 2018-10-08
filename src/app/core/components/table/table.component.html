@@ -11,7 +11,7 @@
               <span>
                   <a class="">
                       <i class="fas fa-align-justify" appScaleFilter (toggle)="toggle($event, i)"></i>
-                      <app-filter *ngIf="i==0"
+                      <app-filter *ngIf="i==1"
                         [checkboxData]="column"
                         (applyFilters)="onApplyClick($event)">
                       </app-filter>

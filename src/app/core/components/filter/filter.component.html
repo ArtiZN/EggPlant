@@ -2,7 +2,7 @@
   <div class="filter-header">
     <form class="example-form">
       <mat-form-field class="example-full-width">
-        <input matInput placeholder="search...">
+        <input matInput [(ngModel)]="searchFilters" [ngModelOptions]="{standalone: true}" placeholder="search...">
       </mat-form-field>
     </form>
   </div>
@@ -10,7 +10,7 @@
     <mat-checkbox (click)="onselectAll()" class="example-margin">
       select all
     </mat-checkbox>
-    <ng-container *ngFor="let checkbox of checkboxData.values; let i = index">
+    <ng-container *ngFor="let checkbox of checkboxData.values | filterSearch:searchFilters; let i = index">
       <mat-checkbox 
         [(ngModel)] = "checkbox.checked"
         class="example-margin">

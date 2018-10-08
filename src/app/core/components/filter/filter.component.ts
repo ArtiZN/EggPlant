@@ -7,6 +7,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 })
 export class FilterComponent implements OnInit {
   isSelectAll: boolean = false;
+  searchFilters: string = "";
 
   constructor() { }
 
