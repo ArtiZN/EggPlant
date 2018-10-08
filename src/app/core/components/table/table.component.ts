@@ -4,6 +4,7 @@ import { MongoService } from './../../services/mongo.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { AgGridNg2 } from 'ag-grid-angular';
+import { getUnique } from '../../utils/filter.utils';
 
 @Component({
   selector: 'app-table',
@@ -15,12 +16,6 @@ export class TableComponent implements OnInit {
   // TODO: find approach of applying 'top' and 'left' properties to dropdown
   dropdownState: boolean[] = [];
 
-  columnDefs = [
-      {headerName: 'Make', field: 'make', checkboxSelection: true  , filter: "agTextColumnFilter"},
-      {headerName: 'Model', field: 'model', filter: "agNumberColumnFilter" },
-      {headerName: 'Price', field: 'price'}
-  ];
-
   thArray: any;
   trArray: any;
 
@@ -31,7 +26,7 @@ export class TableComponent implements OnInit {
       .subscribe((response) => {
         this.thArray = (createHeaderArray(response));
         this.trArray = (createTableArray(response));
-        console.log(this.trArray);
+        console.log(this.thArray);
       });
   }
 
