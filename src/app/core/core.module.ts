@@ -18,6 +18,7 @@ import { FilterComponent } from './components/filter/filter.component';
 import { ScaleFilterDirective } from './directives/scale-filter.directive';
 import { MongoService, MONGO_URL } from './services/mongo.service';
 import { FormsModule } from '@angular/forms';
+import { FilterSearchPipe } from './pipes/filter-search.pipe';
 
 @NgModule({
     imports: [
@@ -37,7 +38,8 @@ import { FormsModule } from '@angular/forms';
         TableComponent,
         BottomPanelComponent,
         FilterComponent,
-        ScaleFilterDirective
+        ScaleFilterDirective,
+        FilterSearchPipe
     ],
     exports: [
 
