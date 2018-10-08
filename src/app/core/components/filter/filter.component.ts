@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-filter',
@@ -7,7 +7,6 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class FilterComponent implements OnInit {
   isSelectAll: boolean = false;
-  selectState: boolean[];
 
   constructor() { }
 
@@ -15,8 +14,11 @@ export class FilterComponent implements OnInit {
   @Input('checkboxData')
   checkboxData: any;
 
+  @Output('applyFilters')
+  applyFilters = new EventEmitter();
+
   ngOnInit() {
-    this.selectState = new Array<boolean>(this.checkboxData.values.length).fill(false);
+    
   }
 
   onselectAll() {
@@ -24,12 +26,16 @@ export class FilterComponent implements OnInit {
     this.toggleAll();
     console.log("select All clicked");
     console.log(this.isSelectAll);
-    console.log(this.selectState);
+    console.log(this.checkboxData.values);
   }
 
   toggleAll() {
-    for(let i = 0; i < this.selectState.length; i++) {
-      this.selectState[i] = this.isSelectAll;
-    };
+    this.checkboxData.values.forEach(element => {
+      element.checked = this.isSelectAll;
+    });
+  }
+
+  onApplyClick() {
+    this.applyFilters.emit(null);
   }
 }

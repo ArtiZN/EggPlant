@@ -17,7 +17,9 @@ export const createHeaderArray = function(data) {
         });
 
         return result.map((element) => {
-            return { name: element.name, values: element.values.filter(getUnique) };
+            return { name: element.name, values: element.values.filter(getUnique).map(el => {
+                return { name: el, checked: false };
+            }) };
         });
     }
     return [];

@@ -12,16 +12,16 @@
     </mat-checkbox>
     <ng-container *ngFor="let checkbox of checkboxData.values; let i = index">
       <mat-checkbox 
-        [(ngModel)] = "selectState[i]"
+        [(ngModel)] = "checkbox.checked"
         class="example-margin">
-          {{ checkbox }}
+          {{ checkbox.name }}
       </mat-checkbox>
     </ng-container>
   </div>
   <div class="filter-footer">
     <div class="d-flex">
       <div class="ml-auto">
-          <button mat-stroked-button color="primary">Apply</button>
+          <button (click)="onApplyClick" mat-stroked-button color="primary">Apply</button>
       </div>
     </div>
   </div>
