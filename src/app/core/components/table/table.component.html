@@ -1,12 +1,13 @@
-<table class="table table responsive">
+<table class="table table-sm">
   <thead>
     <tr>
       <th *ngFor="let column of thArray">
-        <div class="d-flex">
-          <div class="mr-auto p-2">
+        <div class="d-flex header-container">
+          <div class="mr-auto">
               <p>{{ column.name }}</p>
           </div>
-          <div class="p-2">
+          <!--TODO: define classes to these elements-->
+          <div style="margin-left: 40px;">
               <span>
                   <a class="">
                       <i class="fas fa-align-justify" appScaleFilter (toggle)="toggle($event, i)"></i>
