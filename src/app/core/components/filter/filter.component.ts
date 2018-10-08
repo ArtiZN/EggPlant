@@ -24,9 +24,6 @@ export class FilterComponent implements OnInit {
   onselectAll() {
     this.isSelectAll = !this.isSelectAll;
     this.toggleAll();
-    console.log("select All clicked");
-    console.log(this.isSelectAll);
-    console.log(this.checkboxData.values);
   }
 
   toggleAll() {
@@ -36,6 +33,11 @@ export class FilterComponent implements OnInit {
   }
 
   onApplyClick() {
-    this.applyFilters.emit(null);
+    // this.applyFilters.emit(null);
+    let selected = this.checkboxData.values.filter((element) => {
+      return element.checked;
+    });
+    console.log("Apply clicked");
+    console.log(selected);
   }
 }
