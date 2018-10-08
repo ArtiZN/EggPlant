@@ -30,7 +30,8 @@ export class TableComponent implements OnInit {
     this.mongoDataSource.getDocuments(databaseConfig.databaseName, databaseConfig.mainCollectionName)
       .subscribe((response) => {
         this.thArray = (createHeaderArray(response));
-        console.log(createTableArray(response));
+        this.trArray = (createTableArray(response));
+        console.log(this.trArray);
       });
   }
 
