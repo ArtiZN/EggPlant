@@ -1,6 +1,6 @@
 // TODO: apply interfaces to such type of functions
 
-export const createTableArray = function(data) {
+export const createHeaderArray = function(data) {
     if(data && data.length > 0) {
         let result = data[0].map((item) => {
             return { name: item.name, values: [] };
@@ -18,3 +18,17 @@ export const createTableArray = function(data) {
     }
     return [];
 };
+
+export const createTableArray = function(data) {
+    if(data) {
+        let result = [];
+        data.forEach((document, index) => {
+            let row = document.map((element) => {
+                return element.value;
+            });
+            result.push({ id: index, values: row });
+        });
+        return result;
+    }
+    return [];
+}
