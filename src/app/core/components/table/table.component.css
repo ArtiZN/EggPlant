@@ -6,3 +6,8 @@ table thead tr a i:hover {
     cursor: pointer;
     opacity: 0.8;
 }
+
+table thead tr th {
+    white-space: nowrap;
+    min-width: 1%;
+}

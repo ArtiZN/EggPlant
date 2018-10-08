@@ -2,11 +2,19 @@
   <thead>
     <tr>
       <th *ngFor="let column of thArray">
-        {{ column.name }}
-        <a class="mr-1">
-          <i class="fas fa-align-justify" appScaleFilter (toggle)="toggle($event, i)"></i>
-          <!-- <app-filter></app-filter> -->
-        </a>
+        <div class="d-flex">
+          <div class="mr-auto p-2">
+              <p>{{ column.name }}</p>
+          </div>
+          <div class="p-2">
+              <span>
+                  <a class="">
+                      <i class="fas fa-align-justify" appScaleFilter (toggle)="toggle($event, i)"></i>
+                      <!-- <app-filter></app-filter> -->
+                    </a>
+              </span>
+          </div>
+        </div>
       </th>
     </tr>
   </thead>
