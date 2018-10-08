@@ -33,11 +33,13 @@ export class FilterComponent implements OnInit {
   }
 
   onApplyClick() {
-    // this.applyFilters.emit(null);
     let selected = this.checkboxData.values.filter((element) => {
       return element.checked;
     });
-    console.log("Apply clicked");
-    console.log(selected);
+
+    this.applyFilters.emit({
+      name: this.checkboxData.name,
+      items: selected 
+    });
   }
 }

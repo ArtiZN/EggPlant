@@ -33,4 +33,8 @@ export class TableComponent implements OnInit {
   toggle($event, i) {
     this.dropdownState[i] = $event;
   }
+
+  onApplyClick($event) {
+    console.log($event);
+  }
 }
