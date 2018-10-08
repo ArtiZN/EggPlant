@@ -7,15 +7,16 @@
     </form>
   </div>
   <div class="filter-body">
-    <mat-checkbox class="example-margin">
+    <mat-checkbox (click)="onselectAll()" class="example-margin">
       select all
     </mat-checkbox>
-    <ng-container *ngFor="let checkbox of checkboxData.values">
-      <mat-checkbox class="example-margin">
-        {{ checkbox }}
+    <ng-container *ngFor="let checkbox of checkboxData.values; let i = index">
+      <mat-checkbox 
+        [(ngModel)] = "selectState[i]"
+        class="example-margin">
+          {{ checkbox }}
       </mat-checkbox>
     </ng-container>
-    
   </div>
   <div class="filter-footer">
     <div class="d-flex">

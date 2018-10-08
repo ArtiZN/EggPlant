@@ -17,10 +17,12 @@ import { BottomPanelComponent } from './components/bottom-panel/bottom-panel.com
 import { FilterComponent } from './components/filter/filter.component';
 import { ScaleFilterDirective } from './directives/scale-filter.directive';
 import { MongoService, MONGO_URL } from './services/mongo.service';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
     imports: [
         BrowserModule,
+        FormsModule,
         MatTabsModule,
         MatInputModule,
         MatCheckboxModule,
@@ -41,6 +43,7 @@ import { MongoService, MONGO_URL } from './services/mongo.service';
 
     ],
     providers: [
+        MongoService,
         {
 			provide: MONGO_URL, 
 			useValue: `${restApiConfig.protocol}://${restApiConfig.host}:${restApiConfig.port}/${restApiConfig.api}`			
