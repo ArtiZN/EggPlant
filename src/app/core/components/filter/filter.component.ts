@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-filter',
@@ -9,7 +9,10 @@ export class FilterComponent implements OnInit {
 
   constructor() { }
 
+  // TODO: apply interfaces to these properties
+  @Input('checkboxData')
+  checkboxData: any;
+
   ngOnInit() {
   }
-
 }

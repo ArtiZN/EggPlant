@@ -10,15 +10,12 @@
     <mat-checkbox class="example-margin">
       select all
     </mat-checkbox>
-    <mat-checkbox class="example-margin">
-        select all
-      </mat-checkbox>
+    <ng-container *ngFor="let checkbox of checkboxData.values">
       <mat-checkbox class="example-margin">
-          select all
-        </mat-checkbox>
-        <mat-checkbox class="example-margin">
-            select all
-          </mat-checkbox>
+        {{ checkbox }}
+      </mat-checkbox>
+    </ng-container>
+    
   </div>
   <div class="filter-footer">
     <div class="d-flex">

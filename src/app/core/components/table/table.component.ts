@@ -26,7 +26,6 @@ export class TableComponent implements OnInit {
       .subscribe((response) => {
         this.thArray = (createHeaderArray(response));
         this.trArray = (createTableArray(response));
-        console.log(this.thArray);
       });
   }
 

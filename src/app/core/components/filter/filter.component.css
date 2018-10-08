@@ -40,4 +40,5 @@ mat-form-field {
 
 .example-margin {
     margin: 5px 10px;
+    display: block;
 }
