@@ -21,7 +21,11 @@
   </thead>
   <tbody>
     <tr *ngFor="let row of trArray">
-      <td *ngFor="let element of row.values">{{ element }}</td>
+      <td *ngFor="let element of row.values">
+        <div style="max-height: 20px">
+          {{ element }}
+        </div>
+      </td>
     </tr>
   </tbody>
 </table>
