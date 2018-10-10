@@ -16,7 +16,7 @@ table tbody tr td {
 table thead tr th:not(:last-child),
 table tbody tr td:not(:last-child) {
     border-right: 1px solid #dee2e6;
-    vertical-align: middle !important;
+    vertical-align: middle !important; /* TODO: fix this property and th, td height */
     padding: 10px 10px;
 }
 
