@@ -1,3 +1,4 @@
+import { FilterContainerService } from './../../services/filter-container.service';
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
@@ -9,7 +10,7 @@ export class FilterComponent implements OnInit {
   isSelectAll: boolean = false;
   searchFilters: string = "";
 
-  constructor() { }
+  constructor(private container: FilterContainerService) { }
 
   // TODO: apply interfaces to these properties
   @Input('checkboxData')
@@ -33,14 +34,33 @@ export class FilterComponent implements OnInit {
     });
   }
 
-  onApplyClick() {
-    let selected = this.checkboxData.values.filter((element) => {
-      return element.checked;
-    });
-
-    this.applyFilters.emit({
+  onselectOne(i, checkbox){
+    console.log("----------------------");
+    // console.log(i);
+    //console.log(checkbox);
+    let obj = {
       name: this.checkboxData.name,
-      items: selected 
-    });
+      item: this.checkboxData.values[i]
+    };
+
+    if(checkbox.checked) {
+      this.container.push(obj);
+    }
+    else {
+      this.container.remove(obj);
+    }
+    console.log(this.container.getAll());
+  }
+
+  onApplyClick() {
+    // let selected = this.checkboxData.values.filter((element) => {
+    //   return element.checked;
+    // });
+
+    // this.applyFilters.emit({
+    //   name: this.checkboxData.name,
+    //   items: selected 
+    // });
+    //console.log(this.container.getAll());
   }
 }

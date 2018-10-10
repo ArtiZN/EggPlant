@@ -11,7 +11,7 @@
       select all
     </mat-checkbox>
     <ng-container *ngFor="let checkbox of checkboxData.values | filterSearch:searchFilters; let i = index">
-      <mat-checkbox 
+      <mat-checkbox (change)="onselectOne(i, checkbox)"
         [(ngModel)] = "checkbox.checked"
         class="example-margin">
           {{ checkbox.name }}

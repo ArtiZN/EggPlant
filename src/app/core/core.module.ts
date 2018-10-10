@@ -19,6 +19,7 @@ import { ScaleFilterDirective } from './directives/scale-filter.directive';
 import { MongoService, MONGO_URL } from './services/mongo.service';
 import { FormsModule } from '@angular/forms';
 import { FilterSearchPipe } from './pipes/filter-search.pipe';
+import { FilterContainerService } from './services/filter-container.service';
 
 @NgModule({
     imports: [
@@ -49,7 +50,8 @@ import { FilterSearchPipe } from './pipes/filter-search.pipe';
         {
 			provide: MONGO_URL, 
 			useValue: `${restApiConfig.protocol}://${restApiConfig.host}:${restApiConfig.port}/${restApiConfig.api}`			
-		}
+        },
+        FilterContainerService
     ]
 })
 export class CoreModule { }
