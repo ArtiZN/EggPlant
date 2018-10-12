@@ -1,8 +1,7 @@
 .filter-dropdown {
     position: absolute;
     width: 222px;
-    height: 278px;
-    min-height: 278px;
+    max-height: 278px;
     border-radius: 2px;
     border: 1px solid #BDC3C7;
     background-color: #fff;
@@ -23,6 +22,7 @@
 .filter-footer {
     border-top: 1px solid #BDC3C7;
     padding: 5px 5px;
+    margin-top: auto;
 }
 
 .example-form {
