@@ -15,8 +15,7 @@ export class TableComponent implements OnInit {
   filtersArray: any = {};
 
   // TODO: find approach of applying 'top' and 'left' properties to dropdown
-  dropdownState: boolean[] = [];
-
+  
   thArray: any;
   trArray: any;
 
@@ -28,12 +27,14 @@ export class TableComponent implements OnInit {
         this.thArray = createHeaderArray(response);
         this.trArray = createTableArray(response);
         this.filtersArray = createFilterArray(response);
+
+        console.log(this.thArray);
       });
   }
 
   // TODO: update directive to click outside
   toggle($event, i) {
-    this.dropdownState[i] = $event;
+    this.thArray[i].opened = !this.thArray[i].opened;
   }
 
   onApplyClick($event) {

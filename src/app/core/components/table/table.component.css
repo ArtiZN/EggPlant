@@ -1,5 +1,6 @@
 table thead tr a {
     float: right;
+    width: 16px;
 }
 
 table thead tr a i:hover {
