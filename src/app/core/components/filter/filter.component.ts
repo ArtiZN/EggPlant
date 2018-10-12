@@ -1,3 +1,4 @@
+import { remove, addAll, removeAll } from './../../utils/filter.utils';
 import { FilterContainerService } from './../../services/filter-container.service';
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
@@ -16,6 +17,9 @@ export class FilterComponent implements OnInit {
   @Input('checkboxData')
   checkboxData: any;
 
+  @Input('filterArray')
+  filterArray: any[];
+
   @Output('applyFilters')
   applyFilters = new EventEmitter();
 
@@ -32,35 +36,24 @@ export class FilterComponent implements OnInit {
     this.checkboxData.values.forEach(element => {
       element.checked = this.isSelectAll;
     });
+    if(this.isSelectAll) {
+      addAll(this.filterArray, this.checkboxData.values);
+    }
+    else {
+      removeAll(this.filterArray);
+    }
   }
 
   onselectOne(i, checkbox){
-    console.log("----------------------");
-    // console.log(i);
-    //console.log(checkbox);
-    let obj = {
-      name: this.checkboxData.name,
-      item: this.checkboxData.values[i]
-    };
-
     if(checkbox.checked) {
-      this.container.push(obj);
+      this.filterArray.push(this.checkboxData.values[i].name);
     }
     else {
-      this.container.remove(obj);
+      remove(this.filterArray, this.checkboxData.values[i].name);
     }
-    console.log(this.container.getAll());
   }
 
   onApplyClick() {
-    // let selected = this.checkboxData.values.filter((element) => {
-    //   return element.checked;
-    // });
-
-    // this.applyFilters.emit({
-    //   name: this.checkboxData.name,
-    //   items: selected 
-    // });
-    //console.log(this.container.getAll());
+    this.applyFilters.emit(null);
   }
 }
