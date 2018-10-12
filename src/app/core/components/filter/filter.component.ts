@@ -1,6 +1,6 @@
 import { remove, addAll, removeAll } from './../../utils/filter.utils';
 import { FilterContainerService } from './../../services/filter-container.service';
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, HostListener, ElementRef } from '@angular/core';
 
 @Component({
   selector: 'app-filter',
@@ -11,7 +11,7 @@ export class FilterComponent implements OnInit {
   isSelectAll: boolean = false;
   searchFilters: string = "";
 
-  constructor(private container: FilterContainerService) { }
+  constructor(private container: FilterContainerService, private eRef: ElementRef) { }
 
   // TODO: apply interfaces to these properties
   @Input('checkboxData')
@@ -22,6 +22,16 @@ export class FilterComponent implements OnInit {
 
   @Output('applyFilters')
   applyFilters = new EventEmitter();
+
+  @HostListener('document:click', ['$event'])
+  clickout(event) {
+    if(this.eRef.nativeElement.contains(event.target)) {
+      console.log("clicked inside");
+    } else {
+      console.log("clicked outside");
+    }
+  }
+
 
   ngOnInit() {
     
