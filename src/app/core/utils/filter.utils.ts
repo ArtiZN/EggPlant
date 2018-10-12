@@ -38,3 +38,9 @@ export const createFilterArray = function(array) {
     }
     return filterArray;
 }
+
+export const getFilterArray = function(array) {
+    return { "sFields": array["sFields"].filter((element) => {
+        return element.values.length !== 0;
+    })};
+}

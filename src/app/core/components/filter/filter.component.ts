@@ -55,5 +55,6 @@ export class FilterComponent implements OnInit {
 
   onApplyClick() {
     this.applyFilters.emit(null);
+    removeAll(this.filterArray);
   }
 }

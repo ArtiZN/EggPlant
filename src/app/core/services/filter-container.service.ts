@@ -10,28 +10,28 @@ export class FilterContainerService {
 
   constructor() { }
 
-  getAll() {
-    return this._filterContainer;
-  }
+  // getAll() {
+  //   return this._filterContainer;
+  // }
 
-  // TODO: apply interfaces
-  push(item) {
-    this._filterContainer.push(item);
-  }
+  // // TODO: apply interfaces
+  // push(item) {
+  //   this._filterContainer.push(item);
+  // }
 
-  pushAll(array) {
-    this._filterContainer = addAll(this._filterContainer, array);
-  }
+  // pushAll(array) {
+  //   this._filterContainer = addAll(this._filterContainer, array);
+  // }
 
-  clear() {
-    this._filterContainer = [];
-  }
+  // clear() {
+  //   this._filterContainer = [];
+  // }
 
-  remove(item) {
-    this._filterContainer = remove(this._filterContainer, item);
-  }
+  // remove(item) {
+  //   this._filterContainer = remove(this._filterContainer, item);
+  // }
 
-  removeAll(array) {
-    this._filterContainer = removeAll(this._filterContainer, array);
-  }
+  // removeAll(array) {
+  //   this._filterContainer = removeAll(this._filterContainer, array);
+  // }
 }

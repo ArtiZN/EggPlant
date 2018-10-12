@@ -1,12 +1,9 @@
-import { createFilterArray } from './../../utils/filter.utils';
+import { createFilterArray, getFilterArray } from './../../utils/filter.utils';
 import { createHeaderArray, createTableArray } from './../../utils/viewDB.utils';
 import { databaseConfig } from './../../constants/database.constants';
 import { MongoService } from './../../services/mongo.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { AgGridNg2 } from 'ag-grid-angular';
-import { getUnique } from '../../utils/filter.utils';
-import { ConsoleReporter } from 'jasmine';
 
 @Component({
   selector: 'app-table',
@@ -40,7 +37,13 @@ export class TableComponent implements OnInit {
   }
 
   onApplyClick($event) {
-    console.log($event);
-    console.log(this.filtersArray);
+    let jsonData = getFilterArray(this.filtersArray);
+    this.mongoDataSource.getFilteredDocuments(databaseConfig.databaseName, databaseConfig.mainCollectionName, jsonData)
+      .subscribe((response) => {
+        console.log(jsonData);
+        console.log(response);
+        this.thArray = createHeaderArray(response);
+        this.trArray = createTableArray(response);
+      });
   }
 }
