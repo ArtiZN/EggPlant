@@ -15,4 +15,9 @@ export class MongoService {
     return this.httpClient
       .get(`${this.uri}?sDatabaseName=${sDatabaseName}&sCollectionName=${sCollectionName}`);
   }
+
+  getFilteredDocuments(sDatabaseName: string, sCollectionName: string, jsonData: any): Observable<any> {
+    return this.httpClient
+      .post(`${this.uri}?sDatabaseName=${sDatabaseName}&sCollectionName=${sCollectionName}&sMode=filtering`, jsonData);
+  }
 }
