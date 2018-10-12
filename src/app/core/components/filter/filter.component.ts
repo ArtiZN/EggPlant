@@ -23,15 +23,18 @@ export class FilterComponent implements OnInit {
   @Output('applyFilters')
   applyFilters = new EventEmitter();
 
+  @Output('closeWindow')
+  closeWindow = new EventEmitter<boolean>();
+
   @HostListener('document:click', ['$event'])
   clickout(event) {
-    if(this.eRef.nativeElement.contains(event.target)) {
-      console.log("clicked inside");
+    // TODO: find better approach
+    if(this.eRef.nativeElement.contains(event.target) || event.target.classList.contains('fa-align-justify')) {
+      this.closeWindow.emit(false);
     } else {
-      console.log("clicked outside");
+      this.closeWindow.emit(true);
     }
   }
-
 
   ngOnInit() {
     

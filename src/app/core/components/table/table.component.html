@@ -10,11 +10,12 @@
           <div style="margin-left: 40px;">
               <span>
                   <a class="">
-                      <i class="fas fa-align-justify" appScaleFilter (toggle)="toggle($event, i)"></i>
+                      <i class="fas fa-align-justify" appScaleFilter (click)="toggle($event, i)"></i>
                       <app-filter *ngIf="column.opened"
                         [checkboxData]="column"
                         [filterArray]="filtersArray.sFields[i].values"
-                        (applyFilters)="onApplyClick($event)">
+                        (applyFilters)="onApplyClick($event)"
+                        (closeWindow)="closeWindow($event, i)">
                       </app-filter>
                     </a>
               </span>

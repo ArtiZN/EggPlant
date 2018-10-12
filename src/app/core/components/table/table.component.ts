@@ -13,8 +13,6 @@ import { HttpClient } from '@angular/common/http';
 export class TableComponent implements OnInit {
 
   filtersArray: any = {};
-
-  // TODO: find approach of applying 'top' and 'left' properties to dropdown
   
   thArray: any;
   trArray: any;
@@ -27,22 +25,26 @@ export class TableComponent implements OnInit {
         this.thArray = createHeaderArray(response);
         this.trArray = createTableArray(response);
         this.filtersArray = createFilterArray(response);
-
-        console.log(this.thArray);
       });
   }
 
-  // TODO: update directive to click outside
   toggle($event, i) {
+    if($event) {
+      this.thArray.forEach(element => {
+        element.opened = false;
+      });
+    }
     this.thArray[i].opened = !this.thArray[i].opened;
+  }
+
+  closeWindow($event, i) {
+      this.thArray[i].opened = !$event;
   }
 
   onApplyClick($event) {
     let jsonData = getFilterArray(this.filtersArray);
     this.mongoDataSource.getFilteredDocuments(databaseConfig.databaseName, databaseConfig.mainCollectionName, jsonData)
       .subscribe((response) => {
-        console.log(jsonData);
-        console.log(response);
         this.thArray = createHeaderArray(response);
         this.trArray = createTableArray(response);
       });

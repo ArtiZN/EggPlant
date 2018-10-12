@@ -10,7 +10,6 @@ export class ScaleFilterDirective {
   
   @HostListener('click')
   click() {
-    console.log(this.el);
     this.isClicked = !this.isClicked;
     this.toggle.emit(this.isClicked);
   }
