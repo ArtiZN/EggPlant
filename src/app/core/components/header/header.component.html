@@ -12,10 +12,14 @@
     <div class="collapse navbar-collapse" id="navbarCollapse">
       <ul class="navbar-nav">
         <li class="nav-item dropdown px-2">
-          <a class="nav-link dropdown-toggle" data-toggle="dropdown">Collections</a>
+          <!-- <a class="nav-link dropdown-toggle" data-toggle="dropdown">Collections</a>
           <div class="dropdown-menu">
             <a class="dropdown-item" *ngFor="let collection of collections">{{ collection }}</a>
-          </div>
+          </div> -->
+          <button mat-button [matMenuTriggerFor]="menu">Collections</button>
+            <mat-menu [overlapTrigger]="false" #menu="matMenu">
+              <button mat-menu-item *ngFor="let collection of collections">{{ collection }}</button>
+            </mat-menu>
         </li>
         <li class="nav-item px-2">
           <a class="nav-link">Dashboard</a>
