@@ -3,11 +3,12 @@ import { createFilterArray, getFilterArray } from './../../utils/filter.utils';
 import { createHeaderArray, createTableArray, prepareToExcel } from './../../utils/viewDB.utils';
 import { databaseConfig } from './../../constants/database.constants';
 import { MongoService } from './../../services/mongo.service';
+import { ExcelService } from '../../services/excel.service';
 
 import { Component, OnInit, EventEmitter, Output, Input, OnDestroy } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Subscription } from 'rxjs';
-import { ExcelService } from '../../services/excel.service';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-table',
@@ -23,10 +24,13 @@ export class TableComponent implements OnInit, OnDestroy {
   thArray: any;
   trArray: any;
 
+  showSpinner: boolean = false;
+
   constructor(private http: HttpClient, 
               private mongoDataSource: MongoService,
               private notifier: DatabaseNotifierService,
-              private excelService: ExcelService) { }
+              private excelService: ExcelService,
+              private spinner: NgxSpinnerService) { }
 
   @Output('records')
   records = new EventEmitter<number>();
@@ -43,12 +47,14 @@ export class TableComponent implements OnInit, OnDestroy {
 
   // TODO: find approach of applying this code in another service
   private getData(sDatabaseName, sCollectionName): void {
+    this.spinner.show();
     this.mongoDataSource.getDocuments(sDatabaseName, sCollectionName)
       .subscribe((response: any) => {
         this.thArray = createHeaderArray(response);
         this.trArray = createTableArray(response);
         this.filtersArray = createFilterArray(response);
         this.emitRecordsStat(response.length, response.length);
+        this.spinner.hide();
       });
   }
 
@@ -85,11 +91,13 @@ export class TableComponent implements OnInit, OnDestroy {
 
   onApplyClick($event) {
     let jsonData = getFilterArray(this.filtersArray);
+    this.spinner.show();
     this.mongoDataSource.getFilteredDocuments(databaseConfig.databaseName, databaseConfig.mainCollectionName, jsonData)
       .subscribe((response: any) => {
         this.thArray = createHeaderArray(response);
         this.trArray = createTableArray(response);
         this.emitRecordsStat(null, response.length);
+        this.spinner.hide();
       });
   }
 }

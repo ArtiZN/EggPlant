@@ -7,7 +7,8 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatInputModule } from '@angular/material/input';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatButtonModule } from '@angular/material/button';
-import {MatMenuModule} from '@angular/material/menu';
+import { MatMenuModule } from '@angular/material/menu';
+import { NgxSpinnerModule } from 'ngx-spinner';
 
 
 
@@ -37,7 +38,8 @@ import { SpinnerComponent } from './components/spinner/spinner.component';
         MatCheckboxModule,
         MatButtonModule,
         MatMenuModule,
-        HttpClientModule
+        HttpClientModule,
+        NgxSpinnerModule
     ],
     declarations: [
         HeaderComponent,
