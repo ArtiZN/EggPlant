@@ -1,8 +1,14 @@
 <div class="db-container">
   <div class="main-table-container">
-      <app-table></app-table>
+        <app-table
+            (records)="onRecordsChange($event)"
+            (shown)="onShownChange($event)">
+        </app-table>
   </div>
   <div class="table-panel-container">
-      <app-bottom-panel></app-bottom-panel>
+        <app-bottom-panel 
+            [records]="records"
+            [shown]="shown">
+        </app-bottom-panel>
   </div>
 </div>

@@ -2,7 +2,7 @@ import { createFilterArray, getFilterArray } from './../../utils/filter.utils';
 import { createHeaderArray, createTableArray } from './../../utils/viewDB.utils';
 import { databaseConfig } from './../../constants/database.constants';
 import { MongoService } from './../../services/mongo.service';
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
 @Component({
@@ -19,12 +19,26 @@ export class TableComponent implements OnInit {
 
   constructor(private http: HttpClient, private mongoDataSource: MongoService) { }
 
+  @Output('records')
+  records = new EventEmitter<number>();
+
+  @Output('shown')
+  shown = new EventEmitter<number>();
+
+  private emitRecordsStat(records: number, shown: number) {
+    if(records) {
+      this.records.emit(records);
+    }
+    this.shown.emit(shown);
+  }
+
   ngOnInit() {
     this.mongoDataSource.getDocuments(databaseConfig.databaseName, databaseConfig.mainCollectionName)
-      .subscribe((response) => {
+      .subscribe((response: any) => {
         this.thArray = createHeaderArray(response);
         this.trArray = createTableArray(response);
         this.filtersArray = createFilterArray(response);
+        this.emitRecordsStat(response.length, response.length);
       });
   }
 
@@ -44,9 +58,10 @@ export class TableComponent implements OnInit {
   onApplyClick($event) {
     let jsonData = getFilterArray(this.filtersArray);
     this.mongoDataSource.getFilteredDocuments(databaseConfig.databaseName, databaseConfig.mainCollectionName, jsonData)
-      .subscribe((response) => {
+      .subscribe((response: any) => {
         this.thArray = createHeaderArray(response);
         this.trArray = createTableArray(response);
+        this.emitRecordsStat(null, response.length);
       });
   }
 }

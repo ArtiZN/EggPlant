@@ -7,9 +7,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DatabaseComponent implements OnInit {
 
+  records: number = 0;
+  shown: number = 0;
+
   constructor() { }
 
   ngOnInit() {
   }
 
+  onRecordsChange($event) {
+    this.records = $event;
+  }
+
+  onShownChange($event) {
+    this.shown = $event; 
+  }
 }
