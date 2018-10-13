@@ -26,6 +26,7 @@ import { MongoService, MONGO_URL } from './services/mongo.service';
 import { FormsModule } from '@angular/forms';
 import { FilterSearchPipe } from './pipes/filter-search.pipe';
 import { FilterContainerService } from './services/filter-container.service';
+import { SpinnerComponent } from './components/spinner/spinner.component';
 
 @NgModule({
     imports: [
@@ -47,7 +48,8 @@ import { FilterContainerService } from './services/filter-container.service';
         BottomPanelComponent,
         FilterComponent,
         ScaleFilterDirective,
-        FilterSearchPipe
+        FilterSearchPipe,
+        SpinnerComponent
     ],
     exports: [
 
