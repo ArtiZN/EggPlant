@@ -12,7 +12,6 @@ export const remove = function(array, item) {
 }
 
 export const removeAll = function(array) {
-    // array.slice(0, array.length);
     while(array.length > 0) {
         array.pop();
     }
