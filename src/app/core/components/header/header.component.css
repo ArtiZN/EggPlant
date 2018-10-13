@@ -19,3 +19,9 @@
 div.navbar-header > span {
     color: white;
 }
+
+nav > div.navbar-header > span:nth-child(2) > img {
+    margin-left: -9px;
+    height: 35px;
+    margin-bottom: 5px;
+}
