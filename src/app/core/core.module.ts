@@ -1,3 +1,4 @@
+import { DatabaseNotifierService } from './services/database-notifier.service';
 import { restApiConfig } from './constants/rest.constants';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -56,7 +57,8 @@ import { FilterContainerService } from './services/filter-container.service';
 			provide: MONGO_URL, 
 			useValue: `${restApiConfig.protocol}://${restApiConfig.host}:${restApiConfig.port}/${restApiConfig.api}`			
         },
-        FilterContainerService
+        FilterContainerService,
+        DatabaseNotifierService
     ]
 })
 export class CoreModule { }
