@@ -1,3 +1,4 @@
+import { DatabaseNotifierService } from './../../services/database-notifier.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -10,7 +11,7 @@ export class DatabaseComponent implements OnInit {
   records: number = 0;
   shown: number = 0;
 
-  constructor() { }
+  constructor(private notifier: DatabaseNotifierService) { }
 
   ngOnInit() {
   }
@@ -24,17 +25,14 @@ export class DatabaseComponent implements OnInit {
   }
 
   onGetDataClick($event) {
-    console.log("get");
-    console.log($event);
+    this.notifier.notifyOther({ "getData": true });
   }
 
   onClearFiltersClick($event) {
-    console.log("filter");
-    console.log($event);
+    this.notifier.notifyOther({ "clearFilters": true });
   }
 
   onToExcelClick($event) {
-    console.log("excel");
-    console.log($event);
+    this.notifier.notifyOther({ "toExcel": true });
   }
 }
