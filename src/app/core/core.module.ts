@@ -1,3 +1,4 @@
+import { ExcelService } from './services/excel.service';
 import { DatabaseNotifierService } from './services/database-notifier.service';
 import { restApiConfig } from './constants/rest.constants';
 import { BrowserModule } from '@angular/platform-browser';
@@ -58,7 +59,8 @@ import { FilterContainerService } from './services/filter-container.service';
 			useValue: `${restApiConfig.protocol}://${restApiConfig.host}:${restApiConfig.port}/${restApiConfig.api}`			
         },
         FilterContainerService,
-        DatabaseNotifierService
+        DatabaseNotifierService,
+        ExcelService
     ]
 })
 export class CoreModule { }
