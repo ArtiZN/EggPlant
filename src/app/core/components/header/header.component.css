@@ -11,6 +11,7 @@
     cursor: pointer;
     font-size: 14px;
     font-weight: 500;
+    border: 0;
 }
 
 #navbarCollapse > ul > li > a:hover {
@@ -27,6 +28,7 @@ nav > div.navbar-header > span:nth-child(2) > img {
     margin-bottom: 5px;
 }
 
-/* #navbarCollapse ul li:hover {
-    background-color: rgb(63, 67, 181);
-} */
+button:focus {
+    outline: none;
+    border: 0;
+ }
