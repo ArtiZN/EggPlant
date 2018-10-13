@@ -8,13 +8,9 @@ import { MatInputModule } from '@angular/material/input';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatButtonModule } from '@angular/material/button';
 import { MatMenuModule } from '@angular/material/menu';
+import { MatTooltipModule } from '@angular/material/tooltip';
 import { NgxSpinnerModule } from 'ngx-spinner';
-
-
-
 import { HttpClientModule } from '@angular/common/http';
-
-
 import { HeaderComponent } from './components/header/header.component';
 import { HomeComponent } from './components/home/home.component';
 import { DatabaseComponent } from './components/database/database.component';
@@ -38,6 +34,7 @@ import { SpinnerComponent } from './components/spinner/spinner.component';
         MatCheckboxModule,
         MatButtonModule,
         MatMenuModule,
+        MatTooltipModule,
         HttpClientModule,
         NgxSpinnerModule
     ],
