@@ -21,7 +21,11 @@ div.navbar-header > span {
 }
 
 nav > div.navbar-header > span:nth-child(2) > img {
-    margin-left: -9px;
+    margin-left: 5px;
     height: 35px;
     margin-bottom: 5px;
+}
+
+#navbarCollapse ul li:hover {
+    background-color: rgb(63, 67, 181);
 }
