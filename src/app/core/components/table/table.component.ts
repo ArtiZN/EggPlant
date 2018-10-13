@@ -32,37 +32,36 @@ export class TableComponent implements OnInit, OnDestroy {
   @Output('shown')
   shown = new EventEmitter<number>();
 
-  private emitRecordsStat(records: number, shown: number) {
+  private emitRecordsStat(records: number, shown: number): void {
     if(records) {
       this.records.emit(records);
     }
     this.shown.emit(shown);
   }
 
-  ngOnInit() {
-    // TODO: find better approach
-    this.subscription = this.notifier.notifyObservable$.subscribe((response: any) => {
-      if(response.hasOwnProperty('getData') && response.getData) {
-        console.log("--------------------");
-        console.log("get");
-      }
-      else if(response.hasOwnProperty('clearFilters') && response.clearFilters) {
-        console.log("--------------------");
-        console.log("filters");
-      }
-      else if(response.hasOwnProperty('toExcel') && response.toExcel) {
-        console.log("--------------------");
-        console.log("toxcel");
-      }
-    });
-
-    this.mongoDataSource.getDocuments(databaseConfig.databaseName, databaseConfig.mainCollectionName)
+  // TODO: find approach of applying this code in another service
+  private getData(sDatabaseName, sCollectionName): void {
+    this.mongoDataSource.getDocuments(sDatabaseName, sCollectionName)
       .subscribe((response: any) => {
         this.thArray = createHeaderArray(response);
         this.trArray = createTableArray(response);
         this.filtersArray = createFilterArray(response);
         this.emitRecordsStat(response.length, response.length);
       });
+  }
+
+  ngOnInit() {
+    // TODO: find better approach
+    this.subscription = this.notifier.notifyObservable$.subscribe((response: any) => {
+      if((response.hasOwnProperty('getData') && response.getData) ||
+         (response.hasOwnProperty('clearFilters') && response.clearFilters)) {
+        this.getData(databaseConfig.databaseName, databaseConfig.mainCollectionName);
+      }
+      else if(response.hasOwnProperty('toExcel') && response.toExcel) {
+        
+      }
+    });
+    this.getData(databaseConfig.databaseName, databaseConfig.mainCollectionName);
   }
 
   ngOnDestroy() {
