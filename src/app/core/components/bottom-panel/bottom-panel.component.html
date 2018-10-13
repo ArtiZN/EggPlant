@@ -7,13 +7,13 @@
           <div class="col">Shown : {{ shown }}</div>
         </div>
         <div class="p-2 order-3">
-            <button mat-raised-button color="primary">Get data</button>
+            <button mat-raised-button color="primary" (click)="onGetData()">Get data</button>
         </div>
         <div class="p-2 order-2">
-            <button mat-raised-button color="primary">Clear filters</button>
+            <button mat-raised-button color="primary" (click)="onClearFilters()">Clear filters</button>
         </div>
         <div class="p-2 order-1">
-            <button mat-raised-button color="primary">To Excel</button>
+            <button mat-raised-button color="primary" (click)="onToExcel()">To Excel</button>
         </div>
       </div>
     </div>

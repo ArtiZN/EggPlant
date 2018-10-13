@@ -22,4 +22,19 @@ export class DatabaseComponent implements OnInit {
   onShownChange($event) {
     this.shown = $event; 
   }
+
+  onGetDataClick($event) {
+    console.log("get");
+    console.log($event);
+  }
+
+  onClearFiltersClick($event) {
+    console.log("filter");
+    console.log($event);
+  }
+
+  onToExcelClick($event) {
+    console.log("excel");
+    console.log($event);
+  }
 }

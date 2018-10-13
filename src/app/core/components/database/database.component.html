@@ -8,7 +8,10 @@
   <div class="table-panel-container">
         <app-bottom-panel 
             [records]="records"
-            [shown]="shown">
+            [shown]="shown"
+            (getData)="onGetDataClick($event)"
+            (clearFilters)="onClearFiltersClick($event)"
+            (toExcel)="onToExcelClick($event)">
         </app-bottom-panel>
   </div>
 </div>
