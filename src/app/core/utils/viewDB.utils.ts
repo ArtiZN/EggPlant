@@ -38,3 +38,21 @@ export const createTableArray = function(data) {
     }
     return [];
 }
+
+export const prepareToExcel = function(headers, fields) {
+    if(headers && fields) {
+        let headersArray = headers.map((element) => {
+            return element.name;
+        });
+        let res = [];
+        for(let i = 0; i < fields.length; i++) {
+            let dict = {};
+            for(let j = 0; j < headersArray.length; j++) {
+                dict[headersArray[j]] = fields[i].values[j];
+            }
+            res.push(dict);
+        }
+        return res;
+    }
+    return [];
+}

@@ -1,12 +1,13 @@
 import { DatabaseNotifierService } from './../../services/database-notifier.service';
 import { createFilterArray, getFilterArray } from './../../utils/filter.utils';
-import { createHeaderArray, createTableArray } from './../../utils/viewDB.utils';
+import { createHeaderArray, createTableArray, prepareToExcel } from './../../utils/viewDB.utils';
 import { databaseConfig } from './../../constants/database.constants';
 import { MongoService } from './../../services/mongo.service';
 
 import { Component, OnInit, EventEmitter, Output, Input, OnDestroy } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Subscription } from 'rxjs';
+import { ExcelService } from '../../services/excel.service';
 
 @Component({
   selector: 'app-table',
@@ -24,7 +25,8 @@ export class TableComponent implements OnInit, OnDestroy {
 
   constructor(private http: HttpClient, 
               private mongoDataSource: MongoService,
-              private notifier: DatabaseNotifierService) { }
+              private notifier: DatabaseNotifierService,
+              private excelService: ExcelService) { }
 
   @Output('records')
   records = new EventEmitter<number>();
@@ -58,7 +60,7 @@ export class TableComponent implements OnInit, OnDestroy {
         this.getData(databaseConfig.databaseName, databaseConfig.mainCollectionName);
       }
       else if(response.hasOwnProperty('toExcel') && response.toExcel) {
-        
+        this.excelService.exportAsExcelFile(prepareToExcel(this.thArray, this.trArray), 'test.xlsx');
       }
     });
     this.getData(databaseConfig.databaseName, databaseConfig.mainCollectionName);
