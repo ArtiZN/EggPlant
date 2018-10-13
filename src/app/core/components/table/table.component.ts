@@ -2,7 +2,7 @@ import { createFilterArray, getFilterArray } from './../../utils/filter.utils';
 import { createHeaderArray, createTableArray } from './../../utils/viewDB.utils';
 import { databaseConfig } from './../../constants/database.constants';
 import { MongoService } from './../../services/mongo.service';
-import { Component, OnInit, EventEmitter, Output } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output, Input } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
 @Component({
