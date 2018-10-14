@@ -5,7 +5,7 @@ import { databaseConfig } from './../../constants/database.constants';
 import { MongoService } from './../../services/mongo.service';
 import { ExcelService } from '../../services/excel.service';
 
-import { Component, OnInit, EventEmitter, Output, Input, OnDestroy } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output, Input, OnDestroy, ViewChildren, QueryList, ElementRef, Renderer2 } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Subscription } from 'rxjs';
 import { NgxSpinnerService } from 'ngx-spinner';
@@ -31,13 +31,21 @@ export class TableComponent implements OnInit, OnDestroy {
               private mongoDataSource: MongoService,
               private notifier: DatabaseNotifierService,
               private excelService: ExcelService,
-              private spinner: NgxSpinnerService) { }
+              private spinner: NgxSpinnerService,
+              private renderer: Renderer2) { }
 
   @Output('records')
   records = new EventEmitter<number>();
 
   @Output('shown')
   shown = new EventEmitter<number>();
+
+  @ViewChildren('targetTr')
+  targetTr: QueryList<ElementRef>;
+
+  private resizeRows() {
+    
+  }
 
   private emitRecordsStat(records: number, shown: number): void {
     if(records) {
