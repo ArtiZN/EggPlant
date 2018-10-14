@@ -41,7 +41,7 @@ table tbody tr td:not(:last-child) {
 }
 
 input {
-    outline: none;
+    
     display: block !important; 
 	padding: 0 !important; 
 	margin: 0 !important; 
