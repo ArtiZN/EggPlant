@@ -24,7 +24,8 @@ export class TableComponent implements OnInit, OnDestroy {
   thArray: any;
   trArray: any;
 
-  showSpinner: boolean = false;
+  // TODO: find better approach
+  isStickyPos: boolean = true;
 
   constructor(private http: HttpClient, 
               private mongoDataSource: MongoService,
@@ -81,12 +82,16 @@ export class TableComponent implements OnInit, OnDestroy {
       this.thArray.forEach(element => {
         element.opened = false;
       });
+      this.isStickyPos = false;
     }
     this.thArray[i].opened = !this.thArray[i].opened;
   }
 
   closeWindow($event, i) {
-      this.thArray[i].opened = !$event;
+    this.thArray[i].opened = !$event;
+    if($event) {
+      this.isStickyPos = true;
+    }
   }
 
   onApplyClick($event) {
