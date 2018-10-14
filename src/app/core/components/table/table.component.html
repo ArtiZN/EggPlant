@@ -36,7 +36,9 @@
   <tbody>
     <tr *ngFor="let row of trArray">
       <td *ngFor="let element of row.values">
-        <input type="text" value="{{ element }}">
+        <div style="max-height: 20px">
+           <input type="text" value="{{ element }}"> 
+        </div>
       </td>
     </tr>
   </tbody>
