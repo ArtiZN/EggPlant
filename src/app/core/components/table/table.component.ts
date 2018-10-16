@@ -124,19 +124,22 @@ export class TableComponent implements OnInit, OnDestroy {
   }
 
   focusOutInput(input: HTMLInputElement, _id: string, index: number) {
-    let jsonData = {
-      "name": this.thArray[index].name,
-      "value": input.value
-    };
-    this.mongoDataSource.updateDocument(_id, databaseConfig.databaseName, databaseConfig.mainCollectionName, "ProductsCollection", jsonData)
-      .subscribe((response: any) => {
-        if(response[0].name !== "Errors") {
-          this.setInputColor(input, "rgb(105, 240, 174)");
-        }
-        else {
-          this.dialogs.openEditDialog(response[0].value);
-          this.setInputColor(input, "rgb(255, 64, 129)")
-        }
-      });
+    if(this.currentInputValue !== input.value)
+    {
+      let jsonData = {
+        "name": this.thArray[index].name,
+        "value": input.value
+      };
+      this.mongoDataSource.updateDocument(_id, databaseConfig.databaseName, databaseConfig.mainCollectionName, "ProductsCollection", jsonData)
+        .subscribe((response: any) => {
+          if(response[0].name !== "Errors") {
+            this.setInputColor(input, "rgb(105, 240, 174)");
+          }
+          else {
+            this.dialogs.openEditDialog(response[0].value);
+            this.setInputColor(input, "rgb(255, 64, 129)")
+          }
+        });
+    }
   }
 }
