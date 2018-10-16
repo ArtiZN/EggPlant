@@ -24,6 +24,9 @@ export class TableComponent implements OnInit, OnDestroy {
   thArray: any;
   trArray: any;
 
+  // TODO: get rid of this variable
+  currentInputValue: string;
+
   // TODO: find better approach
   isStickyPos: boolean = true;
 
@@ -109,11 +112,18 @@ export class TableComponent implements OnInit, OnDestroy {
       });
   }
 
-  focusInput() {
-    console.log("focus");
+  focusInput(input: HTMLInputElement) {
+    this.currentInputValue = input.value;
   }
 
-  focusOutInput() {
-    console.log('focusout');
+  focusOutInput(input: HTMLInputElement, _id: string, index: number) {
+    let jsonData = {
+      "name": this.thArray[index].name,
+      "value": input.value
+    };
+    this.mongoDataSource.updateDocument(_id, databaseConfig.databaseName, databaseConfig.mainCollectionName, "ProductsCollection", jsonData)
+      .subscribe((response: any) => {
+        console.log(response);
+      });
   }
 }

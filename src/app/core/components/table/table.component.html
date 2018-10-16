@@ -35,11 +35,11 @@
   </thead>
   <tbody>
     <tr *ngFor="let row of trArray">
-      <td #targetInput *ngFor="let element of row.values">
+      <td #targetInput *ngFor="let element of row.values; let j = index">
         <div style="max-height: 20px">
            <input type="text" value="{{ element }}" [style.width.px]="((element.length + 1) * 8) + 20"
             onkeypress="this.style.width = ((this.value.length + 1) * 8) + 20 + 'px';"
-            (focus)="focusInput($event.target.value)" (focusout)="focusOutInput($event.target.value)">
+            (focus)="focusInput(inputElem)" (blur)="focusOutInput(inputElem, row.values[0], j)" #inputElem [disabled]="isChangingAllowed">
            <!--TODO: apply this code - "((element.length + 1) * 8) + 20" in directive -->
         </div>
       </td>
