@@ -1,0 +1,23 @@
+<mat-dialog-content>
+  <div class="card">
+    <div class="card-header">
+      {{ description }}
+    </div>
+    <div class="card-body alert-danger">
+      <p class="card-text">
+        Error description:
+      </p>
+      <p class="card-text">
+        {{ error }}
+      </p>
+    </div>
+  </div>
+</mat-dialog-content>
+
+<mat-dialog-actions>
+  <div class="d-flex w-100">
+    <div class="ml-auto p-2">
+      <button mat-raised-button color="warn" (click)="close()">Close</button>
+    </div>
+  </div>
+</mat-dialog-actions>

@@ -1,3 +1,4 @@
+import { MainDialogService } from './../../dialogs/services/main-dialog.service';
 import { DatabaseNotifierService } from './../../services/database-notifier.service';
 import { createFilterArray, getFilterArray } from './../../utils/filter.utils';
 import { createHeaderArray, createTableArray, prepareToExcel } from './../../utils/viewDB.utils';
@@ -34,7 +35,8 @@ export class TableComponent implements OnInit, OnDestroy {
               private mongoDataSource: MongoService,
               private notifier: DatabaseNotifierService,
               private excelService: ExcelService,
-              private spinner: NgxSpinnerService) { }
+              private spinner: NgxSpinnerService,
+              private dialogs: MainDialogService) { }
 
   @Input('allowChanging')
   isChangingAllowed: boolean;
@@ -117,13 +119,15 @@ export class TableComponent implements OnInit, OnDestroy {
   }
 
   focusOutInput(input: HTMLInputElement, _id: string, index: number) {
-    let jsonData = {
-      "name": this.thArray[index].name,
-      "value": input.value
-    };
-    this.mongoDataSource.updateDocument(_id, databaseConfig.databaseName, databaseConfig.mainCollectionName, "ProductsCollection", jsonData)
-      .subscribe((response: any) => {
-        console.log(response);
-      });
+    // let jsonData = {
+    //   "name": this.thArray[index].name,
+    //   "value": input.value
+    // };
+    // this.mongoDataSource.updateDocument(_id, databaseConfig.databaseName, databaseConfig.mainCollectionName, "ProductsCollection", jsonData)
+    //   .subscribe((response: any) => {
+    //     // console.log(response);
+    //     this.dialogs.openEditDialog(response[0].value);
+    //   });
+    this.dialogs.openEditDialog("Field value doesn't contain in values list");
   }
 }

@@ -26,7 +26,7 @@ import { FormsModule } from '@angular/forms';
 import { FilterSearchPipe } from './pipes/filter-search.pipe';
 import { FilterContainerService } from './services/filter-container.service';
 import { SpinnerComponent } from './components/spinner/spinner.component';
-import { ModalComponent } from './dialogs/components/modal/modal.component';
+import { EditModalComponent } from './dialogs/components/modal/editmodal.component';
 
 @NgModule({
     imports: [
@@ -53,10 +53,13 @@ import { ModalComponent } from './dialogs/components/modal/modal.component';
         ScaleFilterDirective,
         FilterSearchPipe,
         SpinnerComponent,
-        ModalComponent
+        EditModalComponent
     ],
     exports: [
 
+    ],
+    entryComponents: [
+        EditModalComponent
     ],
     providers: [
         MongoService,
