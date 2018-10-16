@@ -8,12 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DatabaseComponent implements OnInit {
 
+  isChangingAllowed: boolean;
+
   records: number = 0;
   shown: number = 0;
 
   constructor(private notifier: DatabaseNotifierService) { }
 
   ngOnInit() {
+    this.isChangingAllowed = false;
   }
 
   onRecordsChange($event) {
@@ -34,5 +37,9 @@ export class DatabaseComponent implements OnInit {
 
   onToExcelClick($event) {
     this.notifier.notifyOther({ "toExcel": true });
+  }
+
+  onAllowClick($event) {
+    this.isChangingAllowed = $event;
   }
 }

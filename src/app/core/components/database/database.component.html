@@ -1,6 +1,7 @@
 <div class="db-container">
   <div class="main-table-container">
         <app-table
+            [allowChanging]="isChangingAllowed"
             (records)="onRecordsChange($event)"
             (shown)="onShownChange($event)">
         </app-table>
@@ -11,7 +12,8 @@
             [shown]="shown"
             (getData)="onGetDataClick($event)"
             (clearFilters)="onClearFiltersClick($event)"
-            (toExcel)="onToExcelClick($event)">
+            (toExcel)="onToExcelClick($event)"
+            (onAllowChanging)="onAllowClick($event)">
         </app-bottom-panel>
   </div>
 </div>

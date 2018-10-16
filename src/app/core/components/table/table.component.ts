@@ -5,7 +5,7 @@ import { databaseConfig } from './../../constants/database.constants';
 import { MongoService } from './../../services/mongo.service';
 import { ExcelService } from '../../services/excel.service';
 
-import { Component, OnInit, EventEmitter, Output, OnDestroy} from '@angular/core';
+import { Component, OnInit, EventEmitter, Output, Input, OnDestroy} from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Subscription } from 'rxjs';
 import { NgxSpinnerService } from 'ngx-spinner';
@@ -32,6 +32,9 @@ export class TableComponent implements OnInit, OnDestroy {
               private notifier: DatabaseNotifierService,
               private excelService: ExcelService,
               private spinner: NgxSpinnerService) { }
+
+  @Input('allowChanging')
+  isChangingAllowed: boolean;
 
   @Output('records')
   records = new EventEmitter<number>();

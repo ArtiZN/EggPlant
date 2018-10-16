@@ -6,6 +6,7 @@ import { Component, OnInit, Input, Output, EventEmitter, OnChanges, SimpleChange
   styleUrls: ['./bottom-panel.component.css']
 })
 export class BottomPanelComponent implements OnInit, OnChanges {
+  allowChanging: boolean = false;
 
   constructor() { }
 
@@ -24,6 +25,9 @@ export class BottomPanelComponent implements OnInit, OnChanges {
   @Output('toExcel')
   toExcel = new EventEmitter();
 
+  @Output('onAllowChanging')
+  onAllowChanging = new EventEmitter<boolean>();
+
   ngOnInit() {
   }
 
@@ -40,5 +44,11 @@ export class BottomPanelComponent implements OnInit, OnChanges {
 
   onToExcel() {
     this.toExcel.emit(null);
+  }
+
+  // TODO: fix this
+  onAllowChange() {
+    this.allowChanging = !this.allowChanging;
+    this.onAllowChanging.emit(this.allowChanging);
   }
 }
