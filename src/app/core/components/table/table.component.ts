@@ -124,7 +124,7 @@ export class TableComponent implements OnInit, OnDestroy {
     this.currentInputValue = input.value;
   }
 
-  focusOutInput(input: HTMLInputElement, _id: string, index: number) {
+  focusOutInput(input: HTMLInputElement, _id: string, index: number, rowId: number) {
     if(this.currentInputValue !== input.value)
     {
       let jsonData = {
@@ -135,16 +135,26 @@ export class TableComponent implements OnInit, OnDestroy {
         .subscribe((response: any) => {
           if(response[0].name !== "Errors") {
             this.setInputColor(input, "rgb(105, 240, 174)");
+            this.trArray[rowId].values[index].isInvalid = false;
           }
           else {
             this.dialogs.openEditDialog(response[0].value);
-            this.setInputColor(input, "rgb(255, 64, 129)")
+            this.setInputColor(input, "rgb(255, 64, 129)");
+            this.trArray[rowId].values[index].isInvalid = true;
           }
         });
     }
   }
 
+  // TODO: find better approach
   getRowStatus(row: any) {
-
+    console.log("---------------------------------");
+    let filteredArray = row.values.filter((element) => {
+      return element.isInvalid;
+    });
+    if(filteredArray.length === 0) {
+      return "✔";
+    }
+    return "!";
   }
 }

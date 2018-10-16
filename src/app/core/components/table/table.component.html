@@ -36,12 +36,12 @@
   </thead>
   <tbody>
     <tr *ngFor="let row of trArray">
-      <td>1</td>
+      <td>{{ getRowStatus(row) }}</td>
       <td #targetInput *ngFor="let element of row.values; let j = index">
         <div style="max-height: 20px; width: 100%">
            <input type="text" value="{{ element.value }}" [style.width.px]="((element.value.length + 1) * 8) + 20"
             onkeypress="this.style.width = ((this.value.length + 1) * 8) + 20 + 'px';"
-            (focus)="focusInput(inputElem)" (blur)="focusOutInput(inputElem, row.values[0].value, j)" #inputElem [disabled]="!isChangingAllowed"
+            (focus)="focusInput(inputElem)" (blur)="focusOutInput(inputElem, row.values[0].value, j, row.id)" #inputElem [disabled]="!isChangingAllowed"
             (keyup.enter)="$event.target.blur()">
            <!--TODO: apply this code - "((element.length + 1) * 8) + 20" in directive -->
         </div>
