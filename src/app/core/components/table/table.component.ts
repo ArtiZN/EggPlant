@@ -64,6 +64,7 @@ export class TableComponent implements OnInit, OnDestroy {
         this.filtersArray = createFilterArray(response);
         this.emitRecordsStat(response.length, response.length);
         this.spinner.hide();
+        console.log(this.trArray);
       });
   }
 
@@ -141,5 +142,9 @@ export class TableComponent implements OnInit, OnDestroy {
           }
         });
     }
+  }
+
+  getRowStatus(row: any) {
+
   }
 }

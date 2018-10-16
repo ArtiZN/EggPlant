@@ -30,9 +30,9 @@ export const createTableArray = function(data) {
         let result = [];
         data.forEach((document, index) => {
             let row = document.map((element) => {
-                return element.value;
+                return { value: element.value, isInvalid: false };
             });
-            result.push({ id: index, values: row });
+            result.push({ id: index, values: row});
         });
         return result;
     }
@@ -48,7 +48,7 @@ export const prepareToExcel = function(headers, fields) {
         for(let i = 0; i < fields.length; i++) {
             let dict = {};
             for(let j = 0; j < headersArray.length; j++) {
-                dict[headersArray[j]] = fields[i].values[j];
+                dict[headersArray[j]] = fields[i].values[j].value;
             }
             res.push(dict);
         }
