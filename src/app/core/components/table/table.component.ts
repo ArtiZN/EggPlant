@@ -67,6 +67,11 @@ export class TableComponent implements OnInit, OnDestroy {
       });
   }
 
+  private setInputColor(input: HTMLInputElement, color: string) {
+    input.style.backgroundColor = color;
+    input.parentElement.parentElement.style.backgroundColor = color;
+  }
+
   ngOnInit() {
     // TODO: find better approach
     this.subscription = this.notifier.notifyObservable$.subscribe((response: any) => {
@@ -119,15 +124,19 @@ export class TableComponent implements OnInit, OnDestroy {
   }
 
   focusOutInput(input: HTMLInputElement, _id: string, index: number) {
-    // let jsonData = {
-    //   "name": this.thArray[index].name,
-    //   "value": input.value
-    // };
-    // this.mongoDataSource.updateDocument(_id, databaseConfig.databaseName, databaseConfig.mainCollectionName, "ProductsCollection", jsonData)
-    //   .subscribe((response: any) => {
-    //     // console.log(response);
-    //     this.dialogs.openEditDialog(response[0].value);
-    //   });
-    this.dialogs.openEditDialog("Field value doesn't contain in values list");
+    let jsonData = {
+      "name": this.thArray[index].name,
+      "value": input.value
+    };
+    this.mongoDataSource.updateDocument(_id, databaseConfig.databaseName, databaseConfig.mainCollectionName, "ProductsCollection", jsonData)
+      .subscribe((response: any) => {
+        if(response[0].name !== "Errors") {
+          this.setInputColor(input, "rgb(105, 240, 174)");
+        }
+        else {
+          this.dialogs.openEditDialog(response[0].value);
+          this.setInputColor(input, "rgb(255, 64, 129)")
+        }
+      });
   }
 }
