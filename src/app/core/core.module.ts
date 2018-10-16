@@ -1,3 +1,4 @@
+import { MainDialogService } from './dialogs/services/main-dialog.service';
 import { ExcelService } from './services/excel.service';
 import { DatabaseNotifierService } from './services/database-notifier.service';
 import { restApiConfig } from './constants/rest.constants';
@@ -9,6 +10,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatButtonModule } from '@angular/material/button';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatDialogModule } from '@angular/material/dialog';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { HttpClientModule } from '@angular/common/http';
 import { HeaderComponent } from './components/header/header.component';
@@ -24,6 +26,7 @@ import { FormsModule } from '@angular/forms';
 import { FilterSearchPipe } from './pipes/filter-search.pipe';
 import { FilterContainerService } from './services/filter-container.service';
 import { SpinnerComponent } from './components/spinner/spinner.component';
+import { ModalComponent } from './dialogs/components/modal/modal.component';
 
 @NgModule({
     imports: [
@@ -35,6 +38,7 @@ import { SpinnerComponent } from './components/spinner/spinner.component';
         MatButtonModule,
         MatMenuModule,
         MatTooltipModule,
+        MatDialogModule,
         HttpClientModule,
         NgxSpinnerModule
     ],
@@ -48,7 +52,8 @@ import { SpinnerComponent } from './components/spinner/spinner.component';
         FilterComponent,
         ScaleFilterDirective,
         FilterSearchPipe,
-        SpinnerComponent
+        SpinnerComponent,
+        ModalComponent
     ],
     exports: [
 
@@ -61,7 +66,8 @@ import { SpinnerComponent } from './components/spinner/spinner.component';
         },
         FilterContainerService,
         DatabaseNotifierService,
-        ExcelService
+        ExcelService,
+        MainDialogService
     ]
 })
 export class CoreModule { }
