@@ -68,9 +68,18 @@ export class TableComponent implements OnInit, OnDestroy {
       });
   }
 
-  private setInputColor(input: HTMLInputElement, color: string) {
+  private setInputColor(input: HTMLInputElement, color: string): void {
     input.style.backgroundColor = color;
     input.parentElement.parentElement.style.backgroundColor = color;
+  }
+
+  private getRowStatus(row: any): boolean{
+    let filteredArray = row.values.filter((element) => {
+      return element.isInvalid;
+    });
+    console.log("filtered");
+    console.log(row);
+    return filteredArray.length === 0;
   }
 
   ngOnInit() {
@@ -136,18 +145,32 @@ export class TableComponent implements OnInit, OnDestroy {
           if(response[0].name !== "Errors") {
             this.setInputColor(input, "rgb(105, 240, 174)");
             this.trArray[rowId].values[index].isInvalid = false;
+
+            if(this.getRowStatus(this.trArray[rowId])){
+              this.trArray[rowId].status = false;
+            }
+            else {
+              this.trArray[rowId].status = true;
+            }
           }
           else {
             this.dialogs.openEditDialog(response[0].value);
             this.setInputColor(input, "rgb(255, 64, 129)");
             this.trArray[rowId].values[index].isInvalid = true;
+
+            if(this.getRowStatus(this.trArray[rowId])){
+              this.trArray[rowId].status = false;
+            }
+            else {
+              this.trArray[rowId].status = true;
+            }
           }
         });
     }
   }
 
   // TODO: find better approach
-  getRowStatus(row: any) {
+  getRowStatu(row: any) {
     console.log("---------------------------------");
     let filteredArray = row.values.filter((element) => {
       return element.isInvalid;
@@ -156,5 +179,9 @@ export class TableComponent implements OnInit, OnDestroy {
       return "✔";
     }
     return "!";
+  }
+
+  trackTrArray(index, row) {
+    return row ? row.values : undefined;
   }
 }

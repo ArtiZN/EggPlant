@@ -32,7 +32,7 @@ export const createTableArray = function(data) {
             let row = document.map((element) => {
                 return { value: element.value, isInvalid: false };
             });
-            result.push({ id: index, values: row});
+            result.push({ id: index, values: row , status: false });
         });
         return result;
     }
