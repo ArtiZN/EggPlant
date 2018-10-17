@@ -73,13 +73,19 @@ export class TableComponent implements OnInit, OnDestroy {
     input.parentElement.parentElement.style.backgroundColor = color;
   }
 
-  private getRowStatus(row: any): boolean{
-    let filteredArray = row.values.filter((element) => {
+  private getRowStatus(row: any): boolean {
+    return row.values.filter((element) => {
       return element.isInvalid;
-    });
-    console.log("filtered");
-    console.log(row);
-    return filteredArray.length === 0;
+    }).length === 0;
+  }
+
+  private changeRowStatus(rowId: number) {
+    if(this.getRowStatus(this.trArray[rowId])){
+      this.trArray[rowId].status = false;
+    }
+    else {
+      this.trArray[rowId].status = true;
+    }
   }
 
   ngOnInit() {
@@ -145,40 +151,16 @@ export class TableComponent implements OnInit, OnDestroy {
           if(response[0].name !== "Errors") {
             this.setInputColor(input, "rgb(105, 240, 174)");
             this.trArray[rowId].values[index].isInvalid = false;
-
-            if(this.getRowStatus(this.trArray[rowId])){
-              this.trArray[rowId].status = false;
-            }
-            else {
-              this.trArray[rowId].status = true;
-            }
+            this.changeRowStatus(rowId);
           }
           else {
             this.dialogs.openEditDialog(response[0].value);
             this.setInputColor(input, "rgb(255, 64, 129)");
             this.trArray[rowId].values[index].isInvalid = true;
-
-            if(this.getRowStatus(this.trArray[rowId])){
-              this.trArray[rowId].status = false;
-            }
-            else {
-              this.trArray[rowId].status = true;
-            }
+            this.changeRowStatus(rowId);
           }
         });
     }
-  }
-
-  // TODO: find better approach
-  getRowStatu(row: any) {
-    console.log("---------------------------------");
-    let filteredArray = row.values.filter((element) => {
-      return element.isInvalid;
-    });
-    if(filteredArray.length === 0) {
-      return "✔";
-    }
-    return "!";
   }
 
   trackTrArray(index, row) {

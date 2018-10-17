@@ -10,7 +10,7 @@
 <table class="table table-sm">
   <thead>
     <tr>
-      <th><i class="fas fa-table"></i></th>
+      <th [ngClass]="{ 'sticky-pos': isStickyPos, 'rel-pos': !isStickyPos }"><i class="fas fa-table"></i></th>
       <th *ngFor="let column of thArray; let i = index" [ngClass]="{ 'sticky-pos': isStickyPos, 'rel-pos': !isStickyPos }">
         <div class="d-flex header-container">
           <div class="mr-auto">
@@ -35,8 +35,8 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let row of trArray">
-      <td>{{ row.status }}</td>
+    <tr *ngFor="let row of trArray; trackBy: trackTrArray">
+      <td [style.color]="row.status ? 'red' : 'green'">{{ row.status ? '!' : '✔' }}</td>
       <td #targetInput *ngFor="let element of row.values; let j = index">
         <div style="max-height: 20px; width: 100%">
            <input 

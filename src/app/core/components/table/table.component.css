@@ -6,7 +6,8 @@ table th {
 .sticky-pos {
     position: sticky;
     top: 0;
-    z-index: 1; 
+    z-index: 1;
+    border-bottom: 2px solid black; 
 }
 
 .rel-pos {
@@ -36,12 +37,13 @@ table tbody tr td:not(:last-child) {
     padding: 10px 10px;
 }
 
-table tbody tr td:nth-child(1) {
+/* table tbody tr td:nth-child(1) {
     position: sticky;
     top: 30px;
     left: 0;
     background: #fff;
-}
+    text-align: center;
+} */
 
 .header-container {
     max-height: 25px;
