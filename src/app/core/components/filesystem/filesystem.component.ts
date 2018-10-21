@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-filesystem',
@@ -9,7 +9,14 @@ export class FilesystemComponent implements OnInit {
 
   constructor() { }
 
+  excelData: any = [];
+
   ngOnInit() {
   }
 
+  excelDataChange($event) {
+    this.excelData = $event;
+    console.log("-----------------------------");
+    console.log(this.excelData);
+  }
 }

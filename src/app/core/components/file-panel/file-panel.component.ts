@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, Output, ViewChild, ElementRef, EventEmitter } from '@angular/core';
 import * as XLSX from 'xlsx'; 
 
 @Component({
@@ -12,6 +12,9 @@ export class FilePanelComponent implements OnInit {
 
   @ViewChild('fileImportInput')
   fileImportInput: ElementRef;
+
+  @Output('fileData')
+  fileData = new EventEmitter<any>();
 
   ngOnInit() {
   }
@@ -40,7 +43,10 @@ export class FilePanelComponent implements OnInit {
 
         // this.currentFileName = target.files[0]["name"];
         this.fileReset();
+        this.fileData.emit(excelData);
 	    };
-	    reader.readAsBinaryString(target.files[0]);
+      reader.readAsBinaryString(target.files[0]);
   }
+
+
 }

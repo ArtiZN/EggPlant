@@ -2,9 +2,13 @@
 
 <div class="filesystem-container">
     <div class="excel-file-container">
-        <app-file-table></app-file-table>
+        <app-file-table
+            [changeExcelData]="excelData"
+        ></app-file-table>
     </div>
     <div class="excel-file-panel-container">
-        <app-file-panel></app-file-panel>
+        <app-file-panel
+            (fileData)="excelDataChange($event)"
+        ></app-file-panel>
     </div>
 </div>
