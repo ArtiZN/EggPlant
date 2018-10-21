@@ -28,6 +28,7 @@ import { FilterContainerService } from './services/filter-container.service';
 import { SpinnerComponent } from './components/spinner/spinner.component';
 import { EditModalComponent } from './dialogs/components/modal/editmodal.component';
 import { FileTableComponent } from './components/file-table/file-table.component';
+import { FilePanelComponent } from './components/file-panel/file-panel.component';
 
 @NgModule({
     imports: [
@@ -55,7 +56,8 @@ import { FileTableComponent } from './components/file-table/file-table.component
         FilterSearchPipe,
         SpinnerComponent,
         EditModalComponent,
-        FileTableComponent
+        FileTableComponent,
+        FilePanelComponent
     ],
     exports: [
 
