@@ -27,6 +27,7 @@ import { FilterSearchPipe } from './pipes/filter-search.pipe';
 import { FilterContainerService } from './services/filter-container.service';
 import { SpinnerComponent } from './components/spinner/spinner.component';
 import { EditModalComponent } from './dialogs/components/modal/editmodal.component';
+import { FileTableComponent } from './components/file-table/file-table.component';
 
 @NgModule({
     imports: [
@@ -53,7 +54,8 @@ import { EditModalComponent } from './dialogs/components/modal/editmodal.compone
         ScaleFilterDirective,
         FilterSearchPipe,
         SpinnerComponent,
-        EditModalComponent
+        EditModalComponent,
+        FileTableComponent
     ],
     exports: [
 
