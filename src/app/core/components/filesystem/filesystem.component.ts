@@ -9,14 +9,21 @@ export class FilesystemComponent implements OnInit {
 
   constructor() { }
 
-  data: any = [];
+  trArray: any = [];
+  thArray: any = [];
 
   ngOnInit() {
   }
 
   excelDataChange($event) {
-    this.data = $event;
-    console.log("-----------------------------");
-    console.log(this.data);
+    console.log("-------------------------------");
+    console.log($event);
+    this.trArray = $event;
+  }
+
+  excelHeadersChange($event) {
+    console.log("^^^^^^^^^^^^^^^^^^^^^^^");
+    console.log($event);
+    this.thArray = $event;
   }
 }

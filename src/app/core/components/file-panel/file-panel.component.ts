@@ -1,3 +1,4 @@
+import { _createHeaderArray, _createTableArray } from './../../utils/filesystem.utils';
 import { Component, OnInit, Output, ViewChild, ElementRef, EventEmitter } from '@angular/core';
 import * as XLSX from 'xlsx'; 
 
@@ -14,7 +15,16 @@ export class FilePanelComponent implements OnInit {
   fileImportInput: ElementRef;
 
   @Output('changeFileData')
-  fileData = new EventEmitter<any>();
+  changeFileData = new EventEmitter<any>();
+
+  @Output('changeHeaderData')
+  changeHeaderData = new EventEmitter<any>();
+
+  private emitDataChanges(excelData) {
+    this.changeHeaderData.emit(_createHeaderArray(excelData));
+    excelData.shift();
+    this.changeFileData.emit(_createTableArray(excelData));
+  }
 
   ngOnInit() {
   }
@@ -39,11 +49,10 @@ export class FilePanelComponent implements OnInit {
 			  const ws: XLSX.WorkSheet = wb.Sheets[wsname];
 
  			  let excelData: any = XLSX.utils.sheet_to_json(ws, {header: 1});
- 			  console.log(excelData);
+        this.emitDataChanges(excelData);
 
         // this.currentFileName = target.files[0]["name"];
         this.fileReset();
-        this.fileData.emit(excelData);
 	    };
       reader.readAsBinaryString(target.files[0]);
   }

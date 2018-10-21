@@ -1,14 +1,14 @@
 <table class="table table-sm">
   <thead>
     <tr>
-      <th *ngFor="let header of excelData[0]">{{ header }}</th>
+      <th *ngFor="let column of thArray;">{{ column?.name }}</th>
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let row of excelData">
-      <ng-container *ngFor="let item of row">
-        <td>{{ item }}</td>
-      </ng-container>
+    <tr *ngFor="let row of trArray">
+      <td *ngFor="let item of row.values">
+        {{ item?.value }}
+      </td>
     </tr>
   </tbody>
 </table>

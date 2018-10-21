@@ -64,7 +64,10 @@ export class TableComponent implements OnInit, OnDestroy {
         this.filtersArray = createFilterArray(response);
         this.emitRecordsStat(response.length, response.length);
         this.spinner.hide();
+        console.log("rows")
         console.log(this.trArray);
+        console.log("headers");
+        console.log(this.thArray);
       });
   }
 

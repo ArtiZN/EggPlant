@@ -3,12 +3,14 @@
 <div class="filesystem-container">
     <div class="excel-file-container">
         <app-file-table
-            [excelData]="data"
+            [excelData]="trArray"
+            [headerData]="thArray"
         ></app-file-table>
     </div>
     <div class="excel-file-panel-container">
         <app-file-panel
             (changeFileData)="excelDataChange($event)"
+            (changeHeaderData)="excelHeadersChange($event)"
         ></app-file-panel>
     </div>
 </div>

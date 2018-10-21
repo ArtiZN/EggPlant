@@ -10,7 +10,10 @@ export class FileTableComponent implements OnInit {
   constructor() { }
 
   @Input('excelData')
-  excelData: any = [];
+  trArray: any = [];
+
+  @Input('headerData')
+  thArray: any = [];
 
   ngOnInit() {
   }
