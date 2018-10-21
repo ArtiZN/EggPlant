@@ -9,7 +9,7 @@ export class FileTableComponent implements OnInit {
 
   constructor() { }
 
-  @Input('changeExcelData')
+  @Input('excelData')
   excelData: any = [];
 
   ngOnInit() {

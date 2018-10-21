@@ -13,7 +13,7 @@ export class FilePanelComponent implements OnInit {
   @ViewChild('fileImportInput')
   fileImportInput: ElementRef;
 
-  @Output('fileData')
+  @Output('changeFileData')
   fileData = new EventEmitter<any>();
 
   ngOnInit() {
