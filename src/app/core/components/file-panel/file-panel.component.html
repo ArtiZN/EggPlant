@@ -12,17 +12,20 @@
             <div class="col">Errors : 0</div>
           </div>
         </div>
-        <div class="p-2 order-4">
+        <div class="p-2 order-1">
           <button mat-raised-button color="primary">Clear Filters</button>
         </div>
-        <div class="p-2 order-3">
+        <div class="p-2 order-2">
           <button mat-raised-button color="primary">Remove All</button>
         </div>
-        <div class="p-2 order-2">
+        <div class="p-2 order-3">
             <button mat-raised-button color="primary">To Database</button>
         </div>
-        <div class="p-2 order-1">
-            <button mat-raised-button color="primary">Upload Excel</button>
+        <div class="p-2 order-4">
+            <div class="upload-btn-wrapper">
+              <button mat-raised-button color="primary">Upload Excel</button>
+              <input #fileImportInput type="file" name="myfile" (change)="fileChangeListener($event)" accept=".xlsx"/>  
+            </div>
         </div>
       </div>
     </div>

@@ -7,3 +7,23 @@
 button {
     margin-top: 6px;
 }
+
+.upload-btn-wrapper {
+    position: relative;
+    overflow: hidden;
+    display: inline-block;
+    padding-right: 15px;
+}
+  
+.upload-btn-wrapper input[type=file] {
+    font-size: 100px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    opacity: 0;
+}
+
+/* TODO: fix this button*/
+.upload-btn-wrapper button:hover {
+    cursor: pointer;
+}
