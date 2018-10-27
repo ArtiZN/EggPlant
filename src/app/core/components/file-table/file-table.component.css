@@ -29,3 +29,14 @@ table tbody tr td:not(:last-child) {
 .header-container {
     max-height: 25px;
 }
+
+.sticky-pos {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    border-bottom: 2px solid black; 
+}
+
+.rel-pos {
+    position: relative; 
+}

@@ -7,7 +7,8 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class FileTableComponent implements OnInit {
 
-  filtersArray: any = {};
+  // TODO: find better approach
+  isStickyPos: boolean = true;
 
   constructor() { }
 
@@ -29,7 +30,7 @@ export class FileTableComponent implements OnInit {
       this.thArray.forEach(element => {
           element.opened = false;
       });
-      // this.isStickyPos = false;
+      this.isStickyPos = false;
     }
     this.thArray[i].opened = !this.thArray[i].opened;
   }
@@ -41,7 +42,7 @@ export class FileTableComponent implements OnInit {
   closeWindow($event, i) {
     this.thArray[i].opened = !$event;
     if($event) {
-      // this.isStickyPos = true;
+      this.isStickyPos = true;
     }
   }
 }
