@@ -1,4 +1,31 @@
 table th {
     padding: 10px 10px;
     background-color: white; 
-} 
+}
+
+table thead tr a {
+    float: right;
+    width: 16px;
+}
+
+table thead tr a i:hover {
+    cursor: pointer;
+    opacity: 0.8;
+}
+
+table thead tr th,
+table tbody tr td {
+    white-space: nowrap;
+    min-width: 1%;
+}
+
+table thead tr th:not(:last-child),
+table tbody tr td:not(:last-child) {
+    border-right: 1px solid #dee2e6;
+    vertical-align: middle !important; /* TODO: fix this property and th, td height */
+    padding: 10px 10px;
+}
+
+.header-container {
+    max-height: 25px;
+}
