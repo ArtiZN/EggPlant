@@ -56,6 +56,4 @@ export class FilePanelComponent implements OnInit {
 	    };
       reader.readAsBinaryString(target.files[0]);
   }
-
-
 }

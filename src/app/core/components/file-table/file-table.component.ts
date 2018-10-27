@@ -24,6 +24,20 @@ export class FileTableComponent implements OnInit {
 
   }
 
+  toggle($event, i) {
+    // if($event) {
+    //   this.thArray.forEach(element => {
+    //       element.opened = false;
+    //   });
+    //   // this.isStickyPos = false;
+    // }
+    this.thArray[i].opened = !this.thArray[i].opened;
+
+    console.log(i, this.thArray[i]);
+    console.log(this.filterData.sFields[i]);
+    console.log(this.trArray[i]);
+  }
+
   onApplyClick($event) {
     console.log("Apply excel clicked");
   }
