@@ -25,17 +25,13 @@ export class FileTableComponent implements OnInit {
   }
 
   toggle($event, i) {
-    // if($event) {
-    //   this.thArray.forEach(element => {
-    //       element.opened = false;
-    //   });
-    //   // this.isStickyPos = false;
-    // }
+    if($event) {
+      this.thArray.forEach(element => {
+          element.opened = false;
+      });
+      // this.isStickyPos = false;
+    }
     this.thArray[i].opened = !this.thArray[i].opened;
-
-    console.log(i, this.thArray[i]);
-    console.log(this.filterData.sFields[i]);
-    console.log(this.trArray[i]);
   }
 
   onApplyClick($event) {
@@ -43,6 +39,9 @@ export class FileTableComponent implements OnInit {
   }
 
   closeWindow($event, i) {
-    console.log("Close window excel");
+    this.thArray[i].opened = !$event;
+    if($event) {
+      // this.isStickyPos = true;
+    }
   }
 }
