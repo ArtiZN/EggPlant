@@ -1,7 +1,27 @@
 <table class="table table-sm">
   <thead>
     <tr>
-      <th *ngFor="let column of thArray;">{{ column?.name }}</th>
+      <th *ngFor="let column of thArray;">
+        <div class="d-flex header-container">
+          <div class="mr-auto">
+              <p>{{ column?.name }}</p>
+          </div>
+          <!--TODO: define classes to these elements-->
+          <div style="margin-left: 40px;">
+            <span>
+                <a class="">
+                    <i class="fas fa-align-justify" appScaleFilter (click)="toggle($event, i)"></i>
+                    <app-filter *ngIf="column?.opened"
+                      [checkboxData]="column"
+                      [filterArray]="filtersArray.sFields[i].values"
+                      (applyFilters)="onApplyClick($event)"
+                      (closeWindow)="closeWindow($event, i)">
+                    </app-filter>
+                  </a>
+            </span>
+          </div>
+        </div>
+      </th>
     </tr>
   </thead>
   <tbody>

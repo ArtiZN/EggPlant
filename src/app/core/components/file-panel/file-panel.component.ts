@@ -1,4 +1,4 @@
-import { _createHeaderArray, _createTableArray } from './../../utils/filesystem.utils';
+import { _createHeaderArray, _createTableArray, _createFiltersArray } from './../../utils/filesystem.utils';
 import { Component, OnInit, Output, ViewChild, ElementRef, EventEmitter } from '@angular/core';
 import * as XLSX from 'xlsx'; 
 
@@ -21,7 +21,7 @@ export class FilePanelComponent implements OnInit {
   changeHeaderData = new EventEmitter<any>();
 
   private emitDataChanges(excelData) {
-    this.changeHeaderData.emit(_createHeaderArray(excelData));
+    this.changeHeaderData.emit({ headers: _createHeaderArray(excelData), filters: _createFiltersArray(excelData[0]) });
     excelData.shift();
     this.changeFileData.emit(_createTableArray(excelData));
   }

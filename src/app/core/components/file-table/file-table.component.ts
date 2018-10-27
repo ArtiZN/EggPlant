@@ -7,6 +7,8 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class FileTableComponent implements OnInit {
 
+  filtersArray: any = {};
+
   constructor() { }
 
   @Input('excelData')
@@ -15,6 +17,18 @@ export class FileTableComponent implements OnInit {
   @Input('headerData')
   thArray: any = [];
 
+  @Input('filterData')
+  filterData: any = {};
+
   ngOnInit() {
+
+  }
+
+  onApplyClick($event) {
+    console.log("Apply excel clicked");
+  }
+
+  closeWindow($event, i) {
+    console.log("Close window excel");
   }
 }

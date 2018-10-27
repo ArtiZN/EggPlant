@@ -68,6 +68,8 @@ export class TableComponent implements OnInit, OnDestroy {
         console.log(this.trArray);
         console.log("headers");
         console.log(this.thArray);
+        console.log('filters');
+        console.log(this.filtersArray);
       });
   }
 

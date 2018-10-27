@@ -11,6 +11,7 @@ export class FilesystemComponent implements OnInit {
 
   trArray: any = [];
   thArray: any = [];
+  filterArray: any = {};
 
   ngOnInit() {
   }
@@ -24,6 +25,7 @@ export class FilesystemComponent implements OnInit {
   excelHeadersChange($event) {
     console.log("^^^^^^^^^^^^^^^^^^^^^^^");
     console.log($event);
-    this.thArray = $event;
+    this.thArray = $event.headers;
+    this.filterArray = $event.filters;
   }
 }

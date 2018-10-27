@@ -31,3 +31,15 @@ export const _createHeaderArray = function(data) {
 
     return result;
 }
+
+export const _createFiltersArray = function(data) {
+    let filterArray = {
+        "sFields": []
+    };
+
+    filterArray.sFields = data.map((element) => {
+        return { name: element, values: [] };
+    });
+
+    return filterArray;
+}
