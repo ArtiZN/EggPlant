@@ -44,7 +44,9 @@ export class FileTableComponent implements OnInit {
     let jsonFiltersData = getFilterArray(this.filterData);
     let jsonData = { data: _prepareForPOST(this.thArray, this.trArray) }; 
 
-    console.log(jsonFiltersData);
+    // TODO: find generic approach
+    jsonFiltersData.sFields.splice(-1,1);
+    jsonFiltersData.sFields.push($event);
 
     // TODO: implement in better way
     this.mongoDataSource

@@ -125,6 +125,8 @@ export class TableComponent implements OnInit, OnDestroy {
   onApplyClick($event) {
     let jsonData = getFilterArray(this.filtersArray);
 
+    console.log(jsonData);
+
     this.spinner.show();
     this.mongoDataSource.getFilteredDocuments(databaseConfig.databaseName, databaseConfig.mainCollectionName, jsonData)
       .subscribe((response: any) => {

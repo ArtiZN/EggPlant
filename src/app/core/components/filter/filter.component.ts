@@ -67,8 +67,8 @@ export class FilterComponent implements OnInit {
   }
 
   onApplyClick() {
-    this.applyFilters.emit(null);
-    // removeAll(this.filterArray); TODO: find approach of uncomment this
+    this.applyFilters.emit({ name: this.checkboxData.name , values: JSON.parse(JSON.stringify(this.filterArray)) });
+    removeAll(this.filterArray); // TODO: find approach of uncomment this
 
   }
 }
