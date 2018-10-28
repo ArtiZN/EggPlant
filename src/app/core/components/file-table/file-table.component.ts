@@ -40,13 +40,21 @@ export class FileTableComponent implements OnInit {
   }
 
   onApplyClick($event) {
-    // let jsonData = getFilterArray(this.filterData);
-    
+    let jsonFiltersData = getFilterArray(this.filterData);
     let jsonData = { data: _prepareForPOST(this.thArray, this.trArray) }; 
 
+    console.log(jsonFiltersData);
+
+    // TODO: implement in better way
     this.mongoDataSource
       .addAllDocuments(databaseConfig.databaseName, databaseConfig.temporaryCollectionName, jsonData)
-      .subscribe((response) => { });
+      .subscribe((response) => { 
+        this.mongoDataSource
+          .getFilteredDocuments(databaseConfig.databaseName, databaseConfig.temporaryCollectionName, jsonFiltersData)
+          .subscribe((res: any) => { 
+            console.log(res);
+          });
+      });
   }
 
   closeWindow($event, i) {
