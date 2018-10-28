@@ -1,3 +1,4 @@
+import { databaseConfig } from './../../constants/database.constants';
 import { _prepareForPOST } from './../../utils/filesystem.utils';
 import { MongoService } from './../../services/mongo.service';
 import { getFilterArray } from './../../utils/filter.utils';
@@ -39,11 +40,13 @@ export class FileTableComponent implements OnInit {
   }
 
   onApplyClick($event) {
-    let jsonData = getFilterArray(this.filterData);
+    // let jsonData = getFilterArray(this.filterData);
     
-    console.log(this.thArray);
-    console.log(this.trArray);
-    console.log(_prepareForPOST(this.thArray, this.trArray));
+    let jsonData = { data: _prepareForPOST(this.thArray, this.trArray) }; 
+
+    this.mongoDataSource
+      .addAllDocuments(databaseConfig.databaseName, databaseConfig.temporaryCollectionName, jsonData)
+      .subscribe((response) => { });
   }
 
   closeWindow($event, i) {
