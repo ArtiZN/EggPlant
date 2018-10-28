@@ -17,14 +17,10 @@ export class FilesystemComponent implements OnInit {
   }
 
   excelDataChange($event) {
-    console.log("-------------------------------");
-    console.log($event);
     this.trArray = $event;
   }
 
   excelHeadersChange($event) {
-    console.log("^^^^^^^^^^^^^^^^^^^^^^^");
-    console.log($event);
     this.thArray = $event.headers;
     this.filterArray = $event.filters;
   }

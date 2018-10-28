@@ -1,3 +1,4 @@
+import { getFilterArray } from './../../utils/filter.utils';
 import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
@@ -36,7 +37,8 @@ export class FileTableComponent implements OnInit {
   }
 
   onApplyClick($event) {
-    console.log("Apply excel clicked");
+    let jsonData = getFilterArray(this.filterData);
+    
   }
 
   closeWindow($event, i) {

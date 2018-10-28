@@ -64,12 +64,6 @@ export class TableComponent implements OnInit, OnDestroy {
         this.filtersArray = createFilterArray(response);
         this.emitRecordsStat(response.length, response.length);
         this.spinner.hide();
-        console.log("rows")
-        console.log(this.trArray);
-        console.log("headers");
-        console.log(this.thArray);
-        console.log('filters');
-        console.log(this.filtersArray);
       });
   }
 
@@ -130,6 +124,7 @@ export class TableComponent implements OnInit, OnDestroy {
 
   onApplyClick($event) {
     let jsonData = getFilterArray(this.filtersArray);
+
     this.spinner.show();
     this.mongoDataSource.getFilteredDocuments(databaseConfig.databaseName, databaseConfig.mainCollectionName, jsonData)
       .subscribe((response: any) => {
