@@ -43,3 +43,13 @@ export const _createFiltersArray = function(data) {
 
     return filterArray;
 }
+
+export const _prepareForPOST = function(thArray, trArray) {
+    return trArray.map((element) => {
+        let document = {};
+        element.values.forEach((item, index) => {
+            document[thArray[index].name] = item.value;
+        });
+        return document;
+    });
+}

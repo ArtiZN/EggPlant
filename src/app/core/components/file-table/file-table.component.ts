@@ -1,3 +1,5 @@
+import { _prepareForPOST } from './../../utils/filesystem.utils';
+import { MongoService } from './../../services/mongo.service';
 import { getFilterArray } from './../../utils/filter.utils';
 import { Component, OnInit, Input } from '@angular/core';
 
@@ -11,7 +13,7 @@ export class FileTableComponent implements OnInit {
   // TODO: find better approach
   isStickyPos: boolean = true;
 
-  constructor() { }
+  constructor(private mongoDataSource: MongoService) { }
 
   @Input('excelData')
   trArray: any = [];
@@ -39,6 +41,9 @@ export class FileTableComponent implements OnInit {
   onApplyClick($event) {
     let jsonData = getFilterArray(this.filterData);
     
+    console.log(this.thArray);
+    console.log(this.trArray);
+    console.log(_prepareForPOST(this.thArray, this.trArray));
   }
 
   closeWindow($event, i) {
