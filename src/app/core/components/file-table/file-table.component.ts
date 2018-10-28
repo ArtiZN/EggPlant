@@ -1,3 +1,4 @@
+import { createHeaderArray, createTableArray } from './../../utils/viewDB.utils';
 import { databaseConfig } from './../../constants/database.constants';
 import { _prepareForPOST } from './../../utils/filesystem.utils';
 import { MongoService } from './../../services/mongo.service';
@@ -52,7 +53,8 @@ export class FileTableComponent implements OnInit {
         this.mongoDataSource
           .getFilteredDocuments(databaseConfig.databaseName, databaseConfig.temporaryCollectionName, jsonFiltersData)
           .subscribe((res: any) => { 
-            console.log(res);
+            this.thArray = createHeaderArray(res);
+            this.trArray = createTableArray(res);
           });
       });
   }
