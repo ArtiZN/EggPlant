@@ -4,20 +4,26 @@
       {{ description }}
     </div>
 
-    <mat-form-field>
-      <mat-select placeholder="select sheet">
-        <mat-option *ngFor="let sheetName of sheetNames" [value]="sheetName">
-          {{ sheetName }}
-        </mat-option>
-      </mat-select>
-    </mat-form-field>
+    <div class="card-body">
+      <mat-form-field>
+        <mat-select placeholder="select sheet">
+          <mat-option *ngFor="let sheetName of sheetNames" [value]="sheetName">
+            {{ sheetName }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <div class="card-footer text-muted">
+      {{ filename }}
+    </div>
   </div>
 </mat-dialog-content>
 
 <mat-dialog-actions>
   <div class="d-flex w-100">
     <div class="ml-auto p-2">
-      <button mat-raised-button color="warn" (click)="close()">Close</button>
+      <button mat-raised-button color="primary" (click)="close()">Close</button>
     </div>
   </div>
 </mat-dialog-actions>

@@ -64,7 +64,7 @@ export class FilePanelComponent implements OnInit {
             this.changeHeaderData.emit({ headers: createHeaderArray(response), filters: createFilterArray(response) });
             this.changeFileData.emit(createTableArray(response));
 
-            this.dialogsService.openLoadFileDialog("some file", 2, ["sheet 1", "sheet 2"]);
+            this.dialogsService.openLoadFileDialog("some file--------------", 2, ["sheet 1", "sheet 2"]);
           });
 
         // this.emitDataChanges(excelData);
