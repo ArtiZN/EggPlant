@@ -29,6 +29,7 @@ import { SpinnerComponent } from './components/spinner/spinner.component';
 import { EditModalComponent } from './dialogs/components/modal/editmodal.component';
 import { FileTableComponent } from './components/file-table/file-table.component';
 import { FilePanelComponent } from './components/file-panel/file-panel.component';
+import { LoadFilemodalComponent } from './dialogs/components/load-filemodal/load-filemodal.component';
 
 @NgModule({
     imports: [
@@ -57,7 +58,8 @@ import { FilePanelComponent } from './components/file-panel/file-panel.component
         SpinnerComponent,
         EditModalComponent,
         FileTableComponent,
-        FilePanelComponent
+        FilePanelComponent,
+        LoadFilemodalComponent
     ],
     exports: [
 
