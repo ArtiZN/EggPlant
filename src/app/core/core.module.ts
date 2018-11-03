@@ -31,6 +31,7 @@ import { FileTableComponent } from './components/file-table/file-table.component
 import { FilePanelComponent } from './components/file-panel/file-panel.component';
 import { LoadFilemodalComponent } from './dialogs/components/load-filemodal/load-filemodal.component';
 import { LoadFilefinishedmodalComponent } from './dialogs/components/load-filefinishedmodal/load-filefinishedmodal.component';
+import { LoadingFinishedModalComponent } from './dialogs/components/loading-finished-modal/loading-finished-modal.component';
 
 @NgModule({
     imports: [
@@ -61,7 +62,8 @@ import { LoadFilefinishedmodalComponent } from './dialogs/components/load-filefi
         FileTableComponent,
         FilePanelComponent,
         LoadFilemodalComponent,
-        LoadFilefinishedmodalComponent
+        LoadFilefinishedmodalComponent,
+        LoadingFinishedModalComponent
     ],
     exports: [
 
