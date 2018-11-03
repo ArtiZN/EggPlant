@@ -53,3 +53,20 @@ export const _prepareForPOST = function(thArray, trArray) {
         return document;
     });
 }
+
+export const _prepareForValidation = function(array) {
+    let res = [];
+
+    for(let i = 1, k = 2; i < array.length; i++, k++) {
+        let dict = {};
+        array[i].forEach((element, index) => {
+            dict[array[0][index]] = element;
+        });
+        dict["[[Status]]"] = "OK";
+        dict["[[Errors]]"] = "";
+        dict["[SourceRowNumber]"] = k;
+        res.push(dict);
+    }
+
+    return res;
+}
