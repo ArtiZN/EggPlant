@@ -24,7 +24,7 @@ export class MainDialogService {
     this.dialog.open(EditModalComponent, dialogConfig);
   }
 
-  openLoadFileDialog(filename: string, sheetNumber: number, sheetNames: string[]) {
+  openLoadFileDialog(filename: string, sheetNames: string[]) {
     const dialogConfig = new MatDialogConfig();
 
     dialogConfig.disableClose = true;
@@ -32,7 +32,6 @@ export class MainDialogService {
     dialogConfig.width = "400px";
     dialogConfig.data = {
         filename, 
-        sheetNumber,
         sheetNames
     };
 

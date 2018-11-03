@@ -9,7 +9,6 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 export class LoadFilemodalComponent {
   description: string = "Import options";
   filename: string;
-  sheetNumber: number;
   sheetNames: string[];
 
   constructor(
@@ -18,7 +17,6 @@ export class LoadFilemodalComponent {
 
       this.filename = data.filename;
       this.sheetNames = data.sheetNames;
-      this.sheetNumber = data.sheetNumber;
   }
 
   close() {

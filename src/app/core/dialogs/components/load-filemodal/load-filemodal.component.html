@@ -6,7 +6,7 @@
 
     <div class="card-body">
       <mat-form-field>
-        <mat-select placeholder="select sheet">
+        <mat-select placeholder="select sheet" [disableOptionCentering]="false">
           <mat-option *ngFor="let sheetName of sheetNames" [value]="sheetName">
             {{ sheetName }}
           </mat-option>
@@ -15,7 +15,7 @@
     </div>
 
     <div class="card-footer text-muted">
-      {{ filename }}
+      Filename: {{ filename }}
     </div>
   </div>
 </mat-dialog-content>
