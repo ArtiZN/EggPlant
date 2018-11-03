@@ -2,7 +2,7 @@ import { createFilterArray } from './../../utils/filter.utils';
 import { createHeaderArray, createTableArray } from './../../utils/viewDB.utils';
 import { databaseConfig } from './../../constants/database.constants';
 import { MongoService } from './../../services/mongo.service';
-import { _createHeaderArray, _createTableArray, _createFiltersArray, _prepareForValidation } from './../../utils/filesystem.utils';
+import { _createHeaderArray, _createTableArray, _createFiltersArray, _prepareForValidation, _unshiftValidationArray } from './../../utils/filesystem.utils';
 import { Component, OnInit, Output, ViewChild, ElementRef, EventEmitter } from '@angular/core';
 import * as XLSX from 'xlsx'; 
 
@@ -54,13 +54,12 @@ export class FilePanelComponent implements OnInit {
 
         let excelData: any = XLSX.utils.sheet_to_json(ws, {header: 1});
          
-        console.log("-----------------------");
-        console.log(_prepareForValidation(excelData));
 
         this.mongoService
           .validateCollection(databaseConfig.databaseName, databaseConfig.temporaryCollectionName, "ProductsCollection", _prepareForValidation(excelData))
           .subscribe((response) => {
-            console.log(response);
+            console.log("##############");
+            console.log(_unshiftValidationArray(response), response);
           });
 
         this.emitDataChanges(excelData);

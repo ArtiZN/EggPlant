@@ -70,3 +70,22 @@ export const _prepareForValidation = function(array) {
 
     return { data: res };
 }
+
+const move = function(array, from, to) {
+    array.splice(to, 0, array.splice(from, 1)[0]);
+}
+
+export const _unshiftValidationArray = function(arr) {
+    arr.forEach(document => {
+        let statusIndex = document.findIndex((element) => {
+            return element.name === "[[Status]]";
+        });
+        let errorIndex = document.findIndex((element) => {
+            return element.name === "[[Errors]]";
+        });
+        if(statusIndex > -1 && errorIndex > -1) {
+            move(document, statusIndex, 1);
+            move(document, errorIndex, 2);
+        }
+    });
+}
