@@ -52,10 +52,16 @@ export class FilePanelComponent implements OnInit {
 			  const wsname: string = wb.SheetNames[0];
 			  const ws: XLSX.WorkSheet = wb.Sheets[wsname];
 
-         let excelData: any = XLSX.utils.sheet_to_json(ws, {header: 1});
+        let excelData: any = XLSX.utils.sheet_to_json(ws, {header: 1});
          
-         console.log("-----------------------");
-         console.log(_prepareForValidation(excelData));
+        console.log("-----------------------");
+        console.log(_prepareForValidation(excelData));
+
+        this.mongoService
+          .validateCollection(databaseConfig.databaseName, databaseConfig.temporaryCollectionName, "ProductsCollection", _prepareForValidation(excelData))
+          .subscribe((response) => {
+            console.log(response);
+          });
 
         this.emitDataChanges(excelData);
 

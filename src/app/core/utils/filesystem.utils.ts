@@ -68,5 +68,5 @@ export const _prepareForValidation = function(array) {
         res.push(dict);
     }
 
-    return res;
+    return { data: res };
 }
