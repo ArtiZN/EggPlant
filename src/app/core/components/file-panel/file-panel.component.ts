@@ -68,8 +68,8 @@ export class FilePanelComponent implements OnInit {
 
             this.dialogsService.openLoadFileDialog(fileName, sheetNames)
               .afterClosed()
-              .subscribe(() => {
-                console.log("closed modal");
+              .subscribe((data) => {
+                console.log(data);
               });
           });
 

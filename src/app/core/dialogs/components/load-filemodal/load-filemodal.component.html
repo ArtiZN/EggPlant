@@ -6,7 +6,7 @@
 
     <div class="card-body">
       <mat-form-field>
-        <mat-select placeholder="select sheet" [disableOptionCentering]="false">
+        <mat-select placeholder="select sheet" [(value)]="selected">
           <mat-option *ngFor="let sheetName of sheetNames" [value]="sheetName">
             {{ sheetName }}
           </mat-option>

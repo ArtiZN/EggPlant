@@ -11,15 +11,18 @@ export class LoadFilemodalComponent {
   filename: string;
   sheetNames: string[];
 
+  selected: string;
+
   constructor(
       private dialogRef: MatDialogRef<LoadFilemodalComponent>,
       @Inject(MAT_DIALOG_DATA) data) {
 
       this.filename = data.filename;
       this.sheetNames = data.sheetNames;
+      this.selected = this.sheetNames[0];
   }
 
   close() {
-      this.dialogRef.close();
+      this.dialogRef.close({ data: this.selected });
   }
 }
