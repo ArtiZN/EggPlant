@@ -1,3 +1,7 @@
+import { createFilterArray } from './../../utils/filter.utils';
+import { createHeaderArray, createTableArray } from './../../utils/viewDB.utils';
+import { databaseConfig } from './../../constants/database.constants';
+import { MongoService } from './../../services/mongo.service';
 import { _createHeaderArray, _createTableArray, _createFiltersArray } from './../../utils/filesystem.utils';
 import { Component, OnInit, Output, ViewChild, ElementRef, EventEmitter } from '@angular/core';
 import * as XLSX from 'xlsx'; 
@@ -9,7 +13,7 @@ import * as XLSX from 'xlsx';
 })
 export class FilePanelComponent implements OnInit {
 
-  constructor() { }
+  constructor(private mongoService: MongoService) { }
 
   @ViewChild('fileImportInput')
   fileImportInput: ElementRef;
@@ -55,5 +59,16 @@ export class FilePanelComponent implements OnInit {
         this.fileReset();
 	    };
       reader.readAsBinaryString(target.files[0]);
+  }
+
+  clearFiltersClick() {
+    this.mongoService.getDocuments(databaseConfig.databaseName, databaseConfig.temporaryCollectionName)
+      .subscribe((response) => {
+        console.log(response);
+        // console.log(createFilterArray(response))
+
+        this.changeHeaderData.emit({ headers: createHeaderArray(response), filters: createFilterArray(response) });
+        this.changeFileData.emit(createTableArray(response));
+      });
   }
 }

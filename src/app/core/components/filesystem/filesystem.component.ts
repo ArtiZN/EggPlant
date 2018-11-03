@@ -21,6 +21,8 @@ export class FilesystemComponent implements OnInit {
   }
 
   excelHeadersChange($event) {
+    console.log($event);
+
     this.thArray = $event.headers;
     this.filterArray = $event.filters;
   }
