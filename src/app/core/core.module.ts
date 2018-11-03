@@ -11,6 +11,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatSelectModule } from '@angular/material/select';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { HttpClientModule } from '@angular/common/http';
 import { HeaderComponent } from './components/header/header.component';
@@ -34,6 +35,7 @@ import { LoadFilefinishedmodalComponent } from './dialogs/components/load-filefi
 import { LoadingFinishedModalComponent } from './dialogs/components/loading-finished-modal/loading-finished-modal.component';
 
 @NgModule({
+    // TODO: fix these imports
     imports: [
         BrowserModule,
         FormsModule,
@@ -43,6 +45,7 @@ import { LoadingFinishedModalComponent } from './dialogs/components/loading-fini
         MatButtonModule,
         MatMenuModule,
         MatTooltipModule,
+        MatSelectModule,
         MatDialogModule,
         HttpClientModule,
         NgxSpinnerModule
@@ -69,7 +72,8 @@ import { LoadingFinishedModalComponent } from './dialogs/components/loading-fini
 
     ],
     entryComponents: [
-        EditModalComponent
+        EditModalComponent,
+        LoadFilemodalComponent
     ],
     providers: [
         MongoService,

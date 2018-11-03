@@ -1,3 +1,4 @@
+import { LoadFilemodalComponent } from './../components/load-filemodal/load-filemodal.component';
 import { Injectable } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material';
 
@@ -11,8 +12,8 @@ export class MainDialogService {
   constructor(private dialog: MatDialog) { }
 
   openEditDialog(error) {
-
     const dialogConfig = new MatDialogConfig();
+
     dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
     dialogConfig.width = "400px";
@@ -21,5 +22,20 @@ export class MainDialogService {
     };
 
     this.dialog.open(EditModalComponent, dialogConfig);
+  }
+
+  openLoadFileDialog(filename: string, sheetNumber: number, sheetNames: string[]) {
+    const dialogConfig = new MatDialogConfig();
+
+    dialogConfig.disableClose = true;
+    dialogConfig.autoFocus = true;
+    dialogConfig.width = "400px";
+    dialogConfig.data = {
+        filename, 
+        sheetNumber,
+        sheetNames
+    };
+
+    this.dialog.open(LoadFilemodalComponent, dialogConfig);
   }
 }

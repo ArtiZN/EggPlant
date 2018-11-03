@@ -1,3 +1,4 @@
+import { MainDialogService } from './../../dialogs/services/main-dialog.service';
 import { createFilterArray } from './../../utils/filter.utils';
 import { createHeaderArray, createTableArray } from './../../utils/viewDB.utils';
 import { databaseConfig } from './../../constants/database.constants';
@@ -13,7 +14,8 @@ import * as XLSX from 'xlsx';
 })
 export class FilePanelComponent implements OnInit {
 
-  constructor(private mongoService: MongoService) { }
+  constructor(private mongoService: MongoService,
+              private dialogsService: MainDialogService) { }
 
   @ViewChild('fileImportInput')
   fileImportInput: ElementRef;
@@ -61,6 +63,8 @@ export class FilePanelComponent implements OnInit {
             _unshiftValidationArray(response);
             this.changeHeaderData.emit({ headers: createHeaderArray(response), filters: createFilterArray(response) });
             this.changeFileData.emit(createTableArray(response));
+
+            this.dialogsService.openLoadFileDialog("some file", 2, ["sheet 1", "sheet 2"]);
           });
 
         // this.emitDataChanges(excelData);
