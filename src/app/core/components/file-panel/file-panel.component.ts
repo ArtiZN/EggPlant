@@ -58,11 +58,12 @@ export class FilePanelComponent implements OnInit {
         this.mongoService
           .validateCollection(databaseConfig.databaseName, databaseConfig.temporaryCollectionName, "ProductsCollection", _prepareForValidation(excelData))
           .subscribe((response) => {
-            console.log("##############");
-            console.log(_unshiftValidationArray(response), response);
+            _unshiftValidationArray(response);
+            this.changeHeaderData.emit({ headers: createHeaderArray(response), filters: createFilterArray(response) });
+            this.changeFileData.emit(createTableArray(response));
           });
 
-        this.emitDataChanges(excelData);
+        // this.emitDataChanges(excelData);
 
         // this.currentFileName = target.files[0]["name"];
         this.fileReset();
