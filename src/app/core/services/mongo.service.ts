@@ -33,6 +33,11 @@ export class MongoService {
      .post(`${this.uri}?sDatabaseName=${sDatabaseName}&sCollectionName=${sCollectionName}&sMode=insertOne`, jsonData);
   }
 
+  validateCollection(sDatabaseName: string, sCollectionName: string, sValidateCollection, jsonData: any): Observable<any> {
+    return this.httpClient
+      .post(`${this.uri}?sDatabaseName=${sDatabaseName}&sCollectionName=${sCollectionName}&sMode=validateCollection&sValidateCollection=${sValidateCollection}`, jsonData);
+  }
+
   // HTTP PUT
   updateDocument(id: string, sDatabaseName: string, sCollectionName: string, sValidator: string, jsonData: any): Observable<any> {
     return this.httpClient
