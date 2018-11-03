@@ -1,6 +1,6 @@
 import { LoadFilemodalComponent } from './../components/load-filemodal/load-filemodal.component';
 import { Injectable } from '@angular/core';
-import { MatDialog, MatDialogConfig } from '@angular/material';
+import { MatDialog, MatDialogConfig, MatDialogRef } from '@angular/material';
 
 import { EditModalComponent } from "../components/modal/editmodal.component";
 
@@ -24,7 +24,7 @@ export class MainDialogService {
     this.dialog.open(EditModalComponent, dialogConfig);
   }
 
-  openLoadFileDialog(filename: string, sheetNames: string[]) {
+  openLoadFileDialog(filename: string, sheetNames: string[]): MatDialogRef<LoadFilemodalComponent, any> {
     const dialogConfig = new MatDialogConfig();
 
     dialogConfig.disableClose = true;
@@ -35,6 +35,6 @@ export class MainDialogService {
         sheetNames
     };
 
-    this.dialog.open(LoadFilemodalComponent, dialogConfig);
+    return this.dialog.open(LoadFilemodalComponent, dialogConfig);
   }
 }

@@ -66,7 +66,11 @@ export class FilePanelComponent implements OnInit {
             this.changeHeaderData.emit({ headers: createHeaderArray(response), filters: createFilterArray(response) });
             this.changeFileData.emit(createTableArray(response));
 
-            this.dialogsService.openLoadFileDialog(fileName, sheetNames);
+            this.dialogsService.openLoadFileDialog(fileName, sheetNames)
+              .afterClosed()
+              .subscribe(() => {
+                console.log("closed modal");
+              });
           });
 
         
