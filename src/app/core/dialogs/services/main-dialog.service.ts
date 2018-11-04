@@ -1,3 +1,4 @@
+import { ValidationStartedModalComponent } from './../components/validationstarted-modal/validationstarted-modal.component';
 import { LoadFileModalComponent } from './../components/load-filemodal/load-filemodal.component';
 import { Injectable } from '@angular/core';
 import { MatDialog, MatDialogConfig, MatDialogRef } from '@angular/material';
@@ -36,5 +37,18 @@ export class MainDialogService {
     };
 
     return this.dialog.open(LoadFileModalComponent, dialogConfig);
+  }
+
+  openValidationDialog(rowsLoaded: number) {
+    const dialogConfig = new MatDialogConfig();
+
+    dialogConfig.disableClose = true;
+    dialogConfig.autoFocus = true;
+    dialogConfig.width = "400px";
+    dialogConfig.data = {
+      rowsLoaded
+    };
+
+    return this.dialog.open(ValidationStartedModalComponent, dialogConfig);
   }
 }

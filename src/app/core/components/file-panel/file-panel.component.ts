@@ -62,6 +62,7 @@ export class FilePanelComponent implements OnInit {
         this.mongoService
           .validateCollection(databaseConfig.databaseName, databaseConfig.temporaryCollectionName, "ProductsCollection", _prepareForValidation(excelData))
           .subscribe((response) => {
+            let documentsNumber = response.length;
             _unshiftValidationArray(response);
             this.changeHeaderData.emit({ headers: createHeaderArray(response), filters: createFilterArray(response) });
             this.changeFileData.emit(createTableArray(response));
@@ -70,13 +71,14 @@ export class FilePanelComponent implements OnInit {
               .afterClosed()
               .subscribe((data) => {
                 console.log(data);
+
+                this.dialogsService.openValidationDialog(documentsNumber)
+                  .afterClosed()
+                  .subscribe(() => {
+                    console.log('-----');
+                  });
               });
-          });
-
-        
-        // this.emitDataChanges(excelData);
-
-        // this.currentFileName = target.files[0]["name"];
+            });
         this.fileReset();
 	    };
       reader.readAsBinaryString(target.files[0]);
