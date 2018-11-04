@@ -11,47 +11,51 @@
   <thead>
     <tr>
       <th [ngClass]="{ 'sticky-pos': isStickyPos, 'rel-pos': !isStickyPos }"><i class="fas fa-table"></i></th>
-      <th *ngFor="let column of thArray; let i = index" [ngClass]="{ 'sticky-pos': isStickyPos, 'rel-pos': !isStickyPos }">
-        <div class="d-flex header-container">
-          <div class="mr-auto">
-              <p>{{ column.name }}</p>
+      <ng-container *ngFor="let column of thArray; let i = index">
+        <th *ngIf="column.name !== '_id'" [ngClass]="{ 'sticky-pos': isStickyPos, 'rel-pos': !isStickyPos }">
+          <div class="d-flex header-container">
+            <div class="mr-auto">
+                <p>{{ column.name }}</p>
+            </div>
+            <!--TODO: define classes to these elements-->
+            <div style="margin-left: 40px;">
+                <span>
+                    <a class="">
+                        <i class="fas fa-align-justify" appScaleFilter (click)="toggle($event, i)"></i>
+                        <app-filter *ngIf="column.opened"
+                          [checkboxData]="column"
+                          [filterArray]="filtersArray.sFields[i].values"
+                          (applyFilters)="onApplyClick($event)"
+                          (closeWindow)="closeWindow($event, i)">
+                        </app-filter>
+                      </a>
+                </span>
+            </div>
           </div>
-          <!--TODO: define classes to these elements-->
-          <div style="margin-left: 40px;">
-              <span>
-                  <a class="">
-                      <i class="fas fa-align-justify" appScaleFilter (click)="toggle($event, i)"></i>
-                      <app-filter *ngIf="column.opened"
-                        [checkboxData]="column"
-                        [filterArray]="filtersArray.sFields[i].values"
-                        (applyFilters)="onApplyClick($event)"
-                        (closeWindow)="closeWindow($event, i)">
-                      </app-filter>
-                    </a>
-              </span>
-          </div>
-        </div>
-      </th>
+        </th>
+      </ng-container>
     </tr>
   </thead>
   <tbody>
     <tr *ngFor="let row of trArray; trackBy: trackTrArray">
       <td [style.color]="row.status ? 'red' : 'green'">{{ row.status ? '!' : '✔' }}</td>
-      <td #targetInput *ngFor="let element of row.values; let j = index">
-        <div style="max-height: 20px; width: 100%">
-           <input 
-            type="text" 
-            value="{{ element.value }}" 
-            [style.width.px]="((element.value.length + 1) * 8) + 20"
-            onkeypress="this.style.width = ((this.value.length + 1) * 8) + 20 + 'px';"
-            (focus)="focusInput(inputElem)" 
-            (blur)="focusOutInput(inputElem, row.values[0].value, j, row.id)"
-            (keyup.enter)="$event.target.blur()" 
-            #inputElem 
-            [disabled]="!isChangingAllowed">
-           <!--TODO: apply this code - "((element.length + 1) * 8) + 20" in directive -->
-        </div>
-      </td>
+      <ng-container *ngFor="let element of row.values; let j = index">
+        <td #targetInput *ngIf="j !== 0">
+          <div style="max-height: 20px; width: 100%">
+             <input 
+              type="text" 
+              value="{{ element.value }}" 
+              [style.width.px]="((element.value.length + 1) * 8) + 20"
+              onkeypress="this.style.width = ((this.value.length + 1) * 8) + 20 + 'px';"
+              (focus)="focusInput(inputElem)" 
+              (blur)="focusOutInput(inputElem, row.values[0].value, j, row.id)"
+              (keyup.enter)="$event.target.blur()" 
+              #inputElem 
+              [disabled]="!isChangingAllowed">
+             <!--TODO: apply this code - "((element.length + 1) * 8) + 20" in directive -->
+          </div>
+        </td>
+      </ng-container>
     </tr>
   </tbody>
 </table>

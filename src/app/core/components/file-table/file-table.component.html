@@ -1,34 +1,38 @@
 <table class="table table-sm">
   <thead>
     <tr>
-      <th *ngFor="let column of thArray; let i = index" [ngClass]="{ 'sticky-pos': isStickyPos, 'rel-pos': !isStickyPos }">
-        <div class="d-flex header-container">
-          <div class="mr-auto">
-              <p>{{ column?.name }}</p>
+      <ng-container *ngFor="let column of thArray; let i = index">
+        <th *ngIf="column.name !== '_id'" [ngClass]="{ 'sticky-pos': isStickyPos, 'rel-pos': !isStickyPos }">
+          <div class="d-flex header-container">
+            <div class="mr-auto">
+                <p>{{ column?.name }}</p>
+            </div>
+            <!--TODO: define classes to these elements-->
+            <div style="margin-left: 40px;">
+              <span>
+                  <a class="">
+                      <i class="fas fa-align-justify" appScaleFilter (click)="toggle($event, i)"></i>
+                      <app-filter *ngIf="column.opened"
+                        [checkboxData]="column"
+                        [filterArray]="filterData.sFields[i].values"
+                        (applyFilters)="onApplyClick($event)"
+                        (closeWindow)="closeWindow($event, i)">
+                      </app-filter>
+                    </a>
+              </span>
+            </div>
           </div>
-          <!--TODO: define classes to these elements-->
-          <div style="margin-left: 40px;">
-            <span>
-                <a class="">
-                    <i class="fas fa-align-justify" appScaleFilter (click)="toggle($event, i)"></i>
-                    <app-filter *ngIf="column.opened"
-                      [checkboxData]="column"
-                      [filterArray]="filterData.sFields[i].values"
-                      (applyFilters)="onApplyClick($event)"
-                      (closeWindow)="closeWindow($event, i)">
-                    </app-filter>
-                  </a>
-            </span>
-          </div>
-        </div>
-      </th>
+        </th>
+      </ng-container>
     </tr>
   </thead>
   <tbody>
     <tr *ngFor="let row of trArray">
-      <td *ngFor="let item of row.values">
-        {{ item?.value }}
-      </td>
+      <ng-container *ngFor="let item of row.values; let i = index">
+        <td *ngIf="i !== 0">
+          {{ item?.value }}
+        </td>
+      </ng-container>
     </tr>
   </tbody>
 </table>
