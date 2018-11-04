@@ -6,7 +6,7 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
   templateUrl: './load-filemodal.component.html',
   styleUrls: ['./load-filemodal.component.css']
 })
-export class LoadFilemodalComponent {
+export class LoadFileModalComponent {
   description: string = "Import options";
   filename: string;
   sheetNames: string[];
@@ -14,7 +14,7 @@ export class LoadFilemodalComponent {
   selected: string;
 
   constructor(
-      private dialogRef: MatDialogRef<LoadFilemodalComponent>,
+      private dialogRef: MatDialogRef<LoadFileModalComponent>,
       @Inject(MAT_DIALOG_DATA) data) {
 
       this.filename = data.filename;

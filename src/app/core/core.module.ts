@@ -30,8 +30,8 @@ import { SpinnerComponent } from './components/spinner/spinner.component';
 import { EditModalComponent } from './dialogs/components/modal/editmodal.component';
 import { FileTableComponent } from './components/file-table/file-table.component';
 import { FilePanelComponent } from './components/file-panel/file-panel.component';
-import { LoadFilemodalComponent } from './dialogs/components/load-filemodal/load-filemodal.component';
-import { LoadFilefinishedmodalComponent } from './dialogs/components/load-filefinishedmodal/load-filefinishedmodal.component';
+import { LoadFileModalComponent } from './dialogs/components/load-filemodal/load-filemodal.component';
+import { ValidationStartedModalComponent } from './dialogs/components/validationstarted-modal/validationstarted-modal.component';
 import { LoadingFinishedModalComponent } from './dialogs/components/loading-finished-modal/loading-finished-modal.component';
 
 @NgModule({
@@ -64,8 +64,8 @@ import { LoadingFinishedModalComponent } from './dialogs/components/loading-fini
         EditModalComponent,
         FileTableComponent,
         FilePanelComponent,
-        LoadFilemodalComponent,
-        LoadFilefinishedmodalComponent,
+        LoadFileModalComponent,
+        ValidationStartedModalComponent,
         LoadingFinishedModalComponent
     ],
     exports: [
@@ -73,7 +73,7 @@ import { LoadingFinishedModalComponent } from './dialogs/components/loading-fini
     ],
     entryComponents: [
         EditModalComponent,
-        LoadFilemodalComponent
+        LoadFileModalComponent
     ],
     providers: [
         MongoService,
