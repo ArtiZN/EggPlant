@@ -74,7 +74,8 @@ import { LoadingFinishedModalComponent } from './dialogs/components/loading-fini
     entryComponents: [
         EditModalComponent,
         LoadFileModalComponent,
-        ValidationStartedModalComponent
+        ValidationStartedModalComponent,
+        LoadingFinishedModalComponent
     ],
     providers: [
         MongoService,

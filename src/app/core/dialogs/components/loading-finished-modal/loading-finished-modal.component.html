@@ -1,3 +1,24 @@
-<p>
-  loading-finished-modal works!
-</p>
+<mat-dialog-content>
+  <div class="card">
+    <div class="card-header">
+      {{ description }}
+    </div>
+
+    <div class="card-body">
+      <div class="card-text">
+        Loaded: {{ loadedRows }} rows
+      </div>
+      <div class="card-text">
+        Found: {{ errors}} errors
+      </div>
+    </div>
+  </div>
+</mat-dialog-content>
+
+<mat-dialog-actions>
+  <div class="d-flex w-100">
+    <div class="ml-auto p-2">
+      <button mat-raised-button color="primary" (click)="close()">Close</button>
+    </div>
+  </div>
+</mat-dialog-actions>
