@@ -43,11 +43,12 @@ export class FilePanelComponent implements OnInit {
               .afterClosed()
               .subscribe(() => {
                 this.spinner.show();
-                _unshiftValidationArray(response);
-                this.changeHeaderData.emit({ headers: createHeaderArray(response), filters: createFilterArray(response) });
-                this.changeFileData.emit(createTableArray(response));
 
-                this.dialogsService.openLoadingCompleteDialog(100, 100)
+                let errorsNumber = _unshiftValidationArray(response);
+                this.changeHeaderData.emit({ headers: createHeaderArray(response), filters: createFilterArray(response) });
+                this.changeFileData.emit(createTableArray(response)); 
+
+                this.dialogsService.openLoadingCompleteDialog(documentsNumber, errorsNumber)
                   .afterClosed()
                   .subscribe(() => {
                     this.fileReset();

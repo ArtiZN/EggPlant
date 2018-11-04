@@ -75,7 +75,10 @@ const move = function(array, from, to) {
     array.splice(to, 0, array.splice(from, 1)[0]);
 }
 
+// This function returns number of errors in validation
 export const _unshiftValidationArray = function(arr) {
+    let errNumber = 0;
+
     arr.forEach(document => {
         let statusIndex = document.findIndex((element) => {
             return element.name === "[[Status]]";
@@ -84,8 +87,13 @@ export const _unshiftValidationArray = function(arr) {
             return element.name === "[[Errors]]";
         });
         if(statusIndex > -1 && errorIndex > -1) {
+            if(document[errorIndex].value !== "") {
+                errNumber++;
+            }
             move(document, statusIndex, 1);
             move(document, errorIndex, 2);
         }
     });
+
+    return errNumber;
 }
