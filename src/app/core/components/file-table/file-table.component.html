@@ -8,7 +8,7 @@
                 <p>{{ column?.name }}</p>
             </div>
             <!--TODO: define classes to these elements-->
-            <div style="margin-left: 40px;">
+            <div *ngIf="column.name !== '[[Status]]' && column.name !== '[[Errors]]'" style="margin-left: 40px;">
               <span>
                   <a class="">
                       <i class="fas fa-align-justify" appScaleFilter (click)="toggle($event, i)"></i>
