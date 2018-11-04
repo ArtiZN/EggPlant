@@ -6,6 +6,7 @@ import { MongoService } from './../../services/mongo.service';
 import { _createHeaderArray, _createTableArray, _createFiltersArray, _prepareForValidation, _unshiftValidationArray } from './../../utils/filesystem.utils';
 import { Component, OnInit, Output, ViewChild, ElementRef, EventEmitter } from '@angular/core';
 import * as XLSX from 'xlsx'; 
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-file-panel',
@@ -15,7 +16,8 @@ import * as XLSX from 'xlsx';
 export class FilePanelComponent implements OnInit {
 
   constructor(private mongoService: MongoService,
-              private dialogsService: MainDialogService) { }
+              private dialogsService: MainDialogService,
+              private spinner: NgxSpinnerService) { }
 
   @ViewChild('fileImportInput')
   fileImportInput: ElementRef;
@@ -26,10 +28,34 @@ export class FilePanelComponent implements OnInit {
   @Output('changeHeaderData')
   changeHeaderData = new EventEmitter<any>();
 
-  private emitDataChanges(excelData) {
-    this.changeHeaderData.emit({ headers: _createHeaderArray(excelData), filters: _createFiltersArray(excelData[0]) });
-    excelData.shift();
-    this.changeFileData.emit(_createTableArray(excelData));
+  private openDialogs(excelData, fileName, sheetNames) {
+    this.mongoService
+      .validateCollection(databaseConfig.databaseName, databaseConfig.temporaryCollectionName, "ProductsCollection", _prepareForValidation(excelData))
+      .subscribe((response) => {
+        let documentsNumber = response.length;
+
+        this.dialogsService.openLoadFileDialog(fileName, sheetNames)
+          .afterClosed()
+          .subscribe((data) => {
+            // data - name of selected sheet to read
+
+            this.dialogsService.openValidationDialog(documentsNumber)
+              .afterClosed()
+              .subscribe(() => {
+                this.spinner.show();
+                _unshiftValidationArray(response);
+                this.changeHeaderData.emit({ headers: createHeaderArray(response), filters: createFilterArray(response) });
+                this.changeFileData.emit(createTableArray(response));
+
+                this.dialogsService.openLoadingCompleteDialog(100, 100)
+                  .afterClosed()
+                  .subscribe(() => {
+                    this.fileReset();
+                    this.spinner.hide();
+                });
+              });
+          });
+      }); 
   }
 
   ngOnInit() {
@@ -59,33 +85,7 @@ export class FilePanelComponent implements OnInit {
         let fileName = target.files[0]["name"];
         let sheetNames = wb.SheetNames;
 
-        this.mongoService
-          .validateCollection(databaseConfig.databaseName, databaseConfig.temporaryCollectionName, "ProductsCollection", _prepareForValidation(excelData))
-          .subscribe((response) => {
-            let documentsNumber = response.length;
-            _unshiftValidationArray(response);
-            this.changeHeaderData.emit({ headers: createHeaderArray(response), filters: createFilterArray(response) });
-            this.changeFileData.emit(createTableArray(response));
-
-            this.dialogsService.openLoadFileDialog(fileName, sheetNames)
-              .afterClosed()
-              .subscribe((data) => {
-                console.log(data);
-
-                this.dialogsService.openValidationDialog(documentsNumber)
-                  .afterClosed()
-                  .subscribe(() => {
-                    console.log('-----');
-
-                    this.dialogsService.openLoadingCompleteDialog(100, 100)
-                      .afterClosed()
-                      .subscribe(() => {
-                        console.log("closed last");
-                      })
-                  });
-              });
-            });
-        this.fileReset();
+        this.openDialogs(excelData, fileName, sheetNames);
 	    };
       reader.readAsBinaryString(target.files[0]);
   }
@@ -93,8 +93,6 @@ export class FilePanelComponent implements OnInit {
   clearFiltersClick() {
     this.mongoService.getDocuments(databaseConfig.databaseName, databaseConfig.temporaryCollectionName)
       .subscribe((response) => {
-        // console.log(createFilterArray(response))
-
         this.changeHeaderData.emit({ headers: createHeaderArray(response), filters: createFilterArray(response) });
         this.changeFileData.emit(createTableArray(response));
       });
