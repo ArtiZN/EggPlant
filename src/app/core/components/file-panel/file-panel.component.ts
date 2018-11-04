@@ -76,6 +76,12 @@ export class FilePanelComponent implements OnInit {
                   .afterClosed()
                   .subscribe(() => {
                     console.log('-----');
+
+                    this.dialogsService.openLoadingCompleteDialog(100, 100)
+                      .afterClosed()
+                      .subscribe(() => {
+                        console.log("closed last");
+                      })
                   });
               });
             });

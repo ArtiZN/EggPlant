@@ -1,3 +1,4 @@
+import { LoadingFinishedModalComponent } from './../components/loading-finished-modal/loading-finished-modal.component';
 import { ValidationStartedModalComponent } from './../components/validationstarted-modal/validationstarted-modal.component';
 import { LoadFileModalComponent } from './../components/load-filemodal/load-filemodal.component';
 import { Injectable } from '@angular/core';
@@ -39,7 +40,7 @@ export class MainDialogService {
     return this.dialog.open(LoadFileModalComponent, dialogConfig);
   }
 
-  openValidationDialog(rowsLoaded: number) {
+  openValidationDialog(rowsLoaded: number): MatDialogRef<ValidationStartedModalComponent, any> {
     const dialogConfig = new MatDialogConfig();
 
     dialogConfig.disableClose = true;
@@ -50,5 +51,19 @@ export class MainDialogService {
     };
 
     return this.dialog.open(ValidationStartedModalComponent, dialogConfig);
+  }
+
+  openLoadingCompleteDialog(loaded: number, errors: number): MatDialogRef<LoadingFinishedModalComponent, any> {
+    const dialogConfig = new MatDialogConfig();
+
+    dialogConfig.disableClose = true;
+    dialogConfig.autoFocus = true;
+    dialogConfig.width = "400px";
+    dialogConfig.data = {
+      loaded,
+      errors
+    };
+
+    return this.dialog.open(LoadingFinishedModalComponent, dialogConfig);
   }
 }
