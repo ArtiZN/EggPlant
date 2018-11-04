@@ -4,7 +4,10 @@ import { MatDialogConfig } from '@angular/material';
 export class MatConfigFactory {
 
     // TODO: apply args in another way
-    public static createMatConfig(disableClose: boolean, autoFocus: boolean, width: string, data: Object): MatDialogConfig<any> {
+    public static createMatConfig(disableClose: boolean = true, 
+                                  autoFocus: boolean = true, 
+                                  width: string = "400px", 
+                                  data: Object): MatDialogConfig<any> {
         const dialogConfig = new MatDialogConfig();
 
         dialogConfig.disableClose = disableClose;

@@ -15,25 +15,25 @@ export class MainDialogService {
   constructor(private dialog: MatDialog) { }
 
   openEditDialog(error) {
-    const dialogConfig = MatConfigFactory.createMatConfig(true, true, "400px", { error: error });
-    
+    const dialogConfig = MatConfigFactory.createMatConfig(undefined, undefined, undefined, { error: error });
+
     this.dialog.open(EditModalComponent, dialogConfig);
   }
 
   openLoadFileDialog(filename: string, sheetNames: string[]): MatDialogRef<LoadFileModalComponent, any> {
-    const dialogConfig = MatConfigFactory.createMatConfig(true, true, "400px", { filename: filename, sheetNames: sheetNames });
+    const dialogConfig = MatConfigFactory.createMatConfig(undefined, undefined, undefined, { filename: filename, sheetNames: sheetNames });
 
     return this.dialog.open(LoadFileModalComponent, dialogConfig);
   }
 
   openValidationDialog(rowsLoaded: number): MatDialogRef<ValidationStartedModalComponent, any> {
-    const dialogConfig =  MatConfigFactory.createMatConfig(true, true, "400px", { rowsLoaded: rowsLoaded });
+    const dialogConfig =  MatConfigFactory.createMatConfig(undefined, undefined, undefined, { rowsLoaded: rowsLoaded });
     
     return this.dialog.open(ValidationStartedModalComponent, dialogConfig);
   }
 
   openLoadingCompleteDialog(loaded: number, errors: number): MatDialogRef<LoadingFinishedModalComponent, any> {
-    const dialogConfig = MatConfigFactory.createMatConfig(true, true, "400px", { loaded: loaded, errors: errors }); 
+    const dialogConfig = MatConfigFactory.createMatConfig(undefined, undefined, undefined, { loaded: loaded, errors: errors }); 
     
     return this.dialog.open(LoadingFinishedModalComponent, dialogConfig);
   }
