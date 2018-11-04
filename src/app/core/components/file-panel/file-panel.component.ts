@@ -98,4 +98,9 @@ export class FilePanelComponent implements OnInit {
         this.changeFileData.emit(createTableArray(response));
       });
   }
+
+  removeAllClick() {
+    this.changeHeaderData.emit({ headers: [], filters: []});
+    this.changeFileData.emit([]);
+  }
 }
