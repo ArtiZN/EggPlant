@@ -4,6 +4,7 @@ import { Component, OnInit, AfterViewInit } from '@angular/core';
 
 import { FocusMonitor } from '@angular/cdk/a11y';
 import { Router } from '@angular/router';
+import { of } from 'rxjs';
 
 @Component({
   selector: 'app-header',
@@ -24,7 +25,6 @@ export class HeaderComponent implements OnInit, AfterViewInit {
     this.authService.getUser()
       .subscribe((response: any) => {
         this.username = response.username;
-        this.authService.isLogged = true;
       });
   }
 
@@ -33,7 +33,6 @@ export class HeaderComponent implements OnInit, AfterViewInit {
   }
 
   logout() {
-    this.authService.isLogged = false;
     this.router.navigate(['/login']);
   }
 }

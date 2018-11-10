@@ -1,3 +1,4 @@
+import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Injectable, InjectionToken, Inject } from '@angular/core';
 
@@ -7,7 +8,6 @@ export const USER_URL = new InjectionToken<string>("usersUrl");
   providedIn: 'root'
 })
 export class AuthService {
-  isLogged: boolean = false;
 
   constructor(
     private httpClient: HttpClient, 
