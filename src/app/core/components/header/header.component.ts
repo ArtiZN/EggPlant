@@ -3,6 +3,7 @@ import { mongoCollections } from './../../constants/collection.constants';
 import { Component, OnInit, AfterViewInit } from '@angular/core';
 
 import { FocusMonitor } from '@angular/cdk/a11y';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -14,6 +15,7 @@ export class HeaderComponent implements OnInit, AfterViewInit {
   username: string;
 
   constructor(
+    private router: Router,
     private authService: AuthService,
     private focusMonitor: FocusMonitor) { }
 
@@ -22,10 +24,16 @@ export class HeaderComponent implements OnInit, AfterViewInit {
     this.authService.getUser()
       .subscribe((response: any) => {
         this.username = response.username;
+        this.authService.isLogged = true;
       });
   }
 
   ngAfterViewInit() {
     this.focusMonitor.stopMonitoring(document.getElementById('collectionMenu'));
+  }
+
+  logout() {
+    this.authService.isLogged = false;
+    this.router.navigate(['/login']);
   }
 }

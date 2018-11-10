@@ -7,10 +7,13 @@ export const USER_URL = new InjectionToken<string>("usersUrl");
   providedIn: 'root'
 })
 export class AuthService {
+  isLogged: boolean = false;
 
   constructor(
     private httpClient: HttpClient, 
-    @Inject(USER_URL) private uri: string) { }
+    @Inject(USER_URL) private uri: string) { 
+
+  }
 
   getUser() {
     return this.httpClient.get(this.uri);
