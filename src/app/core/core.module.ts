@@ -33,6 +33,7 @@ import { FilePanelComponent } from './components/file-panel/file-panel.component
 import { LoadFileModalComponent } from './dialogs/components/load-filemodal/load-filemodal.component';
 import { ValidationStartedModalComponent } from './dialogs/components/validationstarted-modal/validationstarted-modal.component';
 import { LoadingFinishedModalComponent } from './dialogs/components/loading-finished-modal/loading-finished-modal.component';
+import { LoginComponent } from './components/login/login.component';
 
 @NgModule({
     // TODO: fix these imports
@@ -66,7 +67,8 @@ import { LoadingFinishedModalComponent } from './dialogs/components/loading-fini
         FilePanelComponent,
         LoadFileModalComponent,
         ValidationStartedModalComponent,
-        LoadingFinishedModalComponent
+        LoadingFinishedModalComponent,
+        LoginComponent
     ],
     exports: [
 
