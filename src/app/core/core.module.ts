@@ -1,3 +1,4 @@
+import { AuthService, USER_URL } from './services/auth.service';
 import { MainDialogService } from './dialogs/services/main-dialog.service';
 import { ExcelService } from './services/excel.service';
 import { DatabaseNotifierService } from './services/database-notifier.service';
@@ -86,12 +87,17 @@ import { LoginComponent } from './components/login/login.component';
         MongoService,
         {
 			provide: MONGO_URL, 
-			useValue: `${restApiConfig.protocol}://${restApiConfig.host}:${restApiConfig.port}/${restApiConfig.api}`			
+			useValue: `${restApiConfig.protocol}://${restApiConfig.host}:${restApiConfig.port}/${restApiConfig.endpoints.data}`			
+        },
+        {
+            provide: USER_URL,
+            useValue: `${restApiConfig.protocol}://${restApiConfig.host}:${restApiConfig.port}/${restApiConfig.endpoints.user}`
         },
         FilterContainerService,
         DatabaseNotifierService,
         ExcelService,
-        MainDialogService
+        MainDialogService,
+        AuthService
     ]
 })
 export class CoreModule { }
