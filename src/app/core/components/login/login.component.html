@@ -24,7 +24,7 @@
         </div>
       </form> -->
 
-      <form [formGroup]="form" (ngSubmit)="login(form)" novalidate>
+      <form [formGroup]="form" (ngSubmit)="login(form)">
         <mat-form-field *ngFor="let control of form.LogInControls">
           <input 
             matInput 
@@ -38,12 +38,12 @@
             </div>
           </mat-error>
         </mat-form-field>
+
+        <div class="login-button">
+          <button type="submit" mat-button>log in</button>
+        </div>
       </form>
 
     </mat-card-content>
-    
-    <mat-card-actions>
-      <button mat-button>log in</button>
-    </mat-card-actions>
   </mat-card>
 </div>

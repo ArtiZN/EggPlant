@@ -16,7 +16,7 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
   }
 
-  login() {
-    console.log("formsss");
+  login(form) {
+    console.log(form);
   }
 }
