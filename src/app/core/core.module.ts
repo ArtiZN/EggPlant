@@ -12,6 +12,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatSelectModule } from '@angular/material/select';
+import { MatCardModule } from '@angular/material/card';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { HttpClientModule } from '@angular/common/http';
 import { HeaderComponent } from './components/header/header.component';
@@ -23,7 +24,7 @@ import { BottomPanelComponent } from './components/bottom-panel/bottom-panel.com
 import { FilterComponent } from './components/filter/filter.component';
 import { ScaleFilterDirective } from './directives/scale-filter.directive';
 import { MongoService, MONGO_URL } from './services/mongo.service';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FilterSearchPipe } from './pipes/filter-search.pipe';
 import { FilterContainerService } from './services/filter-container.service';
 import { SpinnerComponent } from './components/spinner/spinner.component';
@@ -49,7 +50,9 @@ import { LoginComponent } from './components/login/login.component';
         MatSelectModule,
         MatDialogModule,
         HttpClientModule,
-        NgxSpinnerModule
+        NgxSpinnerModule,
+        MatCardModule,
+        ReactiveFormsModule
     ],
     declarations: [
         HeaderComponent,

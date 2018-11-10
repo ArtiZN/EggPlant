@@ -1,3 +1,49 @@
-<p>
-  login works!
-</p>
+<div class="login-container">
+  <mat-card class="login-card">
+    <mat-card-header>
+      <div mat-card-avatar class="example-header-image"></div>
+      <mat-card-title>LOGIN PAGE</mat-card-title>
+    </mat-card-header>
+  
+    <mat-card-content>
+      <!-- <form [formGroup]="form" (ngSubmit)="login(form)" novalidate>
+        <div class="form-group" *ngFor="let control of form.LogInControls">
+          <label for="{{control.modelProperty}}"><span>{{ control.label }}</span></label>
+          <input class="form-control" name="{{control.modelProperty}}"
+            formControlName="{{control.modelProperty}}" type="{{control.type}}"/>
+          <ul class="text-danger list-unstyled"
+              *ngIf="control.dirty && control.invalid && formSubmitted">
+            <li *ngFor="let error of control.getValidationMessages()">
+              {{ error }}
+            </li>
+          </ul>
+        </div>
+
+        <div *ngIf="!showValidationMessage()">
+          <p class="text-danger">{{ error }}</p>
+        </div>
+      </form> -->
+
+      <form [formGroup]="form" (ngSubmit)="login(form)" novalidate>
+        <mat-form-field *ngFor="let control of form.LogInControls">
+          <input 
+            matInput 
+            name="{{control.modelProperty}}" 
+            formControlName="{{control.modelProperty}}" 
+            type="{{control.type}}"
+            placeholder="{{control.modelProperty}}">
+          <mat-error *ngIf="control.dirty && control.invalid">
+            <div *ngFor="let error of control.getValidationMessages()">
+              {{ error }}
+            </div>
+          </mat-error>
+        </mat-form-field>
+      </form>
+
+    </mat-card-content>
+    
+    <mat-card-actions>
+      <button mat-button>log in</button>
+    </mat-card-actions>
+  </mat-card>
+</div>

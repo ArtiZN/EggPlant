@@ -1,3 +1,4 @@
+import { LogInFormGroup } from './../../models/login/login.form-group';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -6,10 +7,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
+  form: LogInFormGroup;
 
-  constructor() { }
+  constructor() {
+    this.form = new LogInFormGroup();
+  }
 
   ngOnInit() {
   }
 
+  login() {
+    console.log("formsss");
+  }
 }
